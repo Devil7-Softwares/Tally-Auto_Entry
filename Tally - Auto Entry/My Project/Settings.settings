@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="TallyVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.1</Value>
+    </Setting>
+    <Setting Name="TallyHostURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:9000</Value>
+    </Setting>
+    <Setting Name="NumberOfColumns" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="Skin" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
