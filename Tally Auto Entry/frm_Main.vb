@@ -19,19 +19,23 @@
 '=========================================================================='
 
 Imports DevExpress.Skins
+Imports DevExpress.Spreadsheet
 Imports DevExpress.UserSkins
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Helpers
-
+Imports DevExpress.XtraSpreadsheet
 
 Public Class frm_Main
 
-    Sub New()
-        InitSkins()
-        InitializeComponent()
-        Me.InitSkinGallery()
+#Region "Variables"
 
-    End Sub
+    Dim LedgerNameColumns As New List(Of Integer)({6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39})
+    Dim EffectColumns As New List(Of Integer)({7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40})
+    Dim AmountColumns As New List(Of Integer)({8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41})
+
+#End Region
+
+#Region "Subs"
 
     Sub InitSkins()
         SkinManager.EnableFormSkins()
@@ -42,10 +46,146 @@ Public Class frm_Main
         SkinHelper.InitSkinGallery(rgb_Skins, True)
     End Sub
 
+
+    Sub NewDocument()
+        MainSpreadSheet.CreateNewDocument()
+        Dim S As DevExpress.Spreadsheet.IWorkbook = MainSpreadSheet.Document
+        Dim VoucherEntrySheet As DevExpress.Spreadsheet.Worksheet = S.Worksheets.Add
+        VoucherEntrySheet.Name = "Vouchers"
+        Dim StockEntrySheet As DevExpress.Spreadsheet.Worksheet = S.Worksheets.Add
+        StockEntrySheet.Name = "Stock"
+        MainSpreadSheet.Document.Worksheets.ActiveWorksheet = VoucherEntrySheet
+        Dim SheetsRemove As New List(Of DevExpress.Spreadsheet.Worksheet)
+        For Each i As DevExpress.Spreadsheet.Worksheet In S.Worksheets
+            If i.Name <> "Vouchers" AndAlso i.Name <> "Stock" Then
+                SheetsRemove.Add(i)
+            End If
+        Next
+        For Each i As DevExpress.Spreadsheet.Worksheet In SheetsRemove
+            MainSpreadSheet.Document.Worksheets.Remove(i)
+        Next
+    End Sub
+
+    Sub PrepareSheet()
+        Dim VoucherEntrySheet As DevExpress.Spreadsheet.Worksheet = MainSpreadSheet.Document.Worksheets("Vouchers")
+        MainSpreadSheet.Document.Worksheets.ActiveWorksheet = VoucherEntrySheet
+        Dim Values As New List(Of DevExpress.Spreadsheet.CellValue)
+        MainSpreadSheet.WorksheetDisplayArea.SetSize(MainSpreadSheet.ActiveWorksheet.Index, (6 + (3 * My.Settings.NumberOfColumns)), 99999)
+        For Each i As Integer In LedgerNameColumns
+            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
+            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(Values.ToArray))
+            MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.Color = Color.Red
+            MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
+        Next
+        MainSpreadSheet.ActiveWorksheet.Columns(0).NumberFormat = "dd/mm/yyyy"
+        MainSpreadSheet.ActiveWorksheet.Columns(2).NumberFormat = "##"
+        MainSpreadSheet.ActiveWorksheet.Columns(3).NumberFormat = "##"
+        Try
+            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(0).GetRangeWithAbsoluteReference
+            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.DateEdit)
+        Catch ex As Exception
+
+        End Try
+        Try
+            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(1).GetRangeWithAbsoluteReference
+            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource({"Purchase", "Sales", "Payment", "Receipt", "Contra", "Journal"}))
+        Catch ex As Exception
+
+        End Try
+        For Each i As Integer In EffectColumns
+            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
+            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource({"Dr.", "Cr."}))
+        Next
+    End Sub
+
+#End Region
+
 #Region "Events"
+
+    Sub New()
+        InitSkins()
+        InitializeComponent()
+        Me.InitSkinGallery()
+    End Sub
 
     Private Sub btn_Exit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Exit.ItemClick
         Me.Close()
+    End Sub
+
+    Private Sub MainSpreadSheet_ActiveSheetChanged(sender As Object, e As ActiveSheetChangedEventArgs) Handles MainSpreadSheet.ActiveSheetChanged
+        MainSpreadSheet.WorksheetDisplayArea.SetSize(1, (6), 99999)
+    End Sub
+
+    Private Sub MainSpreadSheet_CustomDrawColumnHeader(sender As Object, e As CustomDrawColumnHeaderEventArgs) Handles MainSpreadSheet.CustomDrawColumnHeader
+        If MainSpreadSheet.ActiveWorksheet.Name = "Vouchers" Then
+            Dim text As String = ""
+            Select Case e.ColumnIndex
+                Case 0
+                    text = "Date"
+                Case 1
+                    text = "Voucher Type"
+                Case 2
+                    text = "Day"
+                Case 3
+                    text = "Month"
+                Case 4
+                    text = "Reference No."
+                Case 5
+                    text = "Narration"
+            End Select
+            If LedgerNameColumns.Contains(e.ColumnIndex) Then
+                text = "Ledger Name"
+            ElseIf EffectColumns.Contains(e.ColumnIndex) Then
+                text = "Effect"
+            ElseIf AmountColumns.Contains(e.ColumnIndex) Then
+                text = "Amount"
+            End If
+            If text <> "" Then
+                e.Handled = True
+                Dim MinW = e.Graphics.MeasureString(text, e.Font).Width + 10
+                If e.Control.ActiveWorksheet.Columns(e.ColumnIndex).WidthInPixels < MinW Then
+                    e.Control.ActiveWorksheet.Columns(e.ColumnIndex).WidthInPixels = MinW
+                End If
+                Dim formatHeaderText As New StringFormat()
+                formatHeaderText.LineAlignment = StringAlignment.Center
+                formatHeaderText.Alignment = StringAlignment.Center
+                formatHeaderText.Trimming = StringTrimming.EllipsisCharacter
+                e.Graphics.DrawString(text, e.Font, e.Cache.GetSolidBrush(e.ForeColor), e.Bounds, formatHeaderText)
+            End If
+        ElseIf MainSpreadSheet.ActiveWorksheet.Name = "Stock" Then
+            Dim text As String = ""
+            Select Case e.ColumnIndex
+                Case 0
+                    text = "Entries Cell Address"
+                Case 1
+                    text = "Name of Item"
+                Case 2
+                    text = "Quantity"
+                Case 3
+                    text = "Rate"
+                Case 4
+                    text = "Unit"
+                Case 5
+                    text = "Amount"
+            End Select
+            If text <> "" Then
+                e.Handled = True
+                Dim MinW = e.Graphics.MeasureString(text, e.Font).Width + 10
+                If e.Control.ActiveWorksheet.Columns(e.ColumnIndex).WidthInPixels < MinW Then
+                    e.Control.ActiveWorksheet.Columns(e.ColumnIndex).WidthInPixels = MinW
+                End If
+                Dim formatHeaderText As New StringFormat()
+                formatHeaderText.LineAlignment = StringAlignment.Center
+                formatHeaderText.Alignment = StringAlignment.Center
+                formatHeaderText.Trimming = StringTrimming.EllipsisCharacter
+                e.Graphics.DrawString(text, e.Font, e.Cache.GetSolidBrush(e.ForeColor), e.Bounds, formatHeaderText)
+            End If
+        End If
+    End Sub
+
+    Private Sub frm_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
+        NewDocument()
+        PrepareSheet()
     End Sub
 
 #End Region

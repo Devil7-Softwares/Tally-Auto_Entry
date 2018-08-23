@@ -65,6 +65,18 @@ Namespace My
                 Me("Skin") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("5")>  _
+        Public Property NumberOfColumns() As Integer
+            Get
+                Return CType(Me("NumberOfColumns"),Integer)
+            End Get
+            Set
+                Me("NumberOfColumns") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
