@@ -70,6 +70,10 @@ Partial Class frm_Main
         Me.btn_Sync = New DevExpress.XtraBars.BarButtonItem()
         Me.txt_CompanyName = New DevExpress.XtraBars.BarEditItem()
         Me.txt_CompanyNameEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.txt_TallyVersion = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_TallyVersionEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.txt_TallyHostURL = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_TallyHostURLEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection()
         Me.rp_Home = New DevExpress.XtraSpreadsheet.UI.HomeRibbonPage()
         Me.rpg_Clipboard = New DevExpress.XtraSpreadsheet.UI.ClipboardRibbonPageGroup()
@@ -79,13 +83,10 @@ Partial Class frm_Main
         Me.rpg_Filter = New DevExpress.XtraSpreadsheet.UI.EditingRibbonPageGroup()
         Me.rpg_Find = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Skins = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.RepositoryItemFontEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemFontEdit()
-        Me.RepositoryItemSpreadsheetFontSizeEdit1 = New DevExpress.XtraSpreadsheet.Design.RepositoryItemSpreadsheetFontSizeEdit()
-        Me.MainSpreadSheet = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
         Me.RepositoryItemPopupGalleryEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit()
         Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.MainSpreadSheet = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
         Me.popupControlContainer1 = New DevExpress.XtraBars.PopupControlContainer()
         Me.panel_FormulaBar = New System.Windows.Forms.Panel()
         Me.MainProgressPanel = New DevExpress.XtraWaitForm.ProgressPanel()
@@ -98,10 +99,9 @@ Partial Class frm_Main
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_CompanyNameEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_TallyVersionEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_TallyHostURLEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemSpreadsheetFontSizeEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.popupControlContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -118,15 +118,15 @@ Partial Class frm_Main
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 175
+        Me.ribbonControl.MaxItemId = 177
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home, Me.rp_Extras})
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Undo)
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Redo)
-        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemFontEdit1, Me.RepositoryItemSpreadsheetFontSizeEdit1, Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit})
+        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit, Me.txt_TallyVersionEdit, Me.txt_TallyHostURLEdit})
         Me.ribbonControl.ShowToolbarCustomizeItem = False
         Me.ribbonControl.Size = New System.Drawing.Size(1100, 143)
         Me.ribbonControl.StatusBar = Me.ribbonStatusBar
@@ -333,14 +333,14 @@ Partial Class frm_Main
         '
         Me.btn_Sync.Caption = "Sync"
         Me.btn_Sync.Id = 172
-        Me.btn_Sync.ImageOptions.SvgImage = CType(resources.GetObject("btn_SyncLedgers.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Sync.ImageOptions.SvgImage = CType(resources.GetObject("btn_Sync.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btn_Sync.Name = "btn_Sync"
         '
         'txt_CompanyName
         '
-        Me.txt_CompanyName.Caption = "Company Name"
+        Me.txt_CompanyName.Caption = "Company Name :"
         Me.txt_CompanyName.Edit = Me.txt_CompanyNameEdit
-        Me.txt_CompanyName.EditWidth = 200
+        Me.txt_CompanyName.EditWidth = 150
         Me.txt_CompanyName.Id = 174
         Me.txt_CompanyName.Name = "txt_CompanyName"
         '
@@ -348,6 +348,32 @@ Partial Class frm_Main
         '
         Me.txt_CompanyNameEdit.AutoHeight = False
         Me.txt_CompanyNameEdit.Name = "txt_CompanyNameEdit"
+        '
+        'txt_TallyVersion
+        '
+        Me.txt_TallyVersion.Caption = "Tally Version      :"
+        Me.txt_TallyVersion.Edit = Me.txt_TallyVersionEdit
+        Me.txt_TallyVersion.EditWidth = 150
+        Me.txt_TallyVersion.Id = 175
+        Me.txt_TallyVersion.Name = "txt_TallyVersion"
+        '
+        'txt_TallyVersionEdit
+        '
+        Me.txt_TallyVersionEdit.AutoHeight = False
+        Me.txt_TallyVersionEdit.Name = "txt_TallyVersionEdit"
+        '
+        'txt_TallyHostURL
+        '
+        Me.txt_TallyHostURL.Caption = "Tally Host URL   :"
+        Me.txt_TallyHostURL.Edit = Me.txt_TallyHostURLEdit
+        Me.txt_TallyHostURL.EditWidth = 150
+        Me.txt_TallyHostURL.Id = 176
+        Me.txt_TallyHostURL.Name = "txt_TallyHostURL"
+        '
+        'txt_TallyHostURLEdit
+        '
+        Me.txt_TallyHostURLEdit.AutoHeight = False
+        Me.txt_TallyHostURLEdit.Name = "txt_TallyHostURLEdit"
         '
         'ribbonImageCollectionLarge
         '
@@ -385,7 +411,9 @@ Partial Class frm_Main
         'rpg_Tally
         '
         Me.rpg_Tally.ItemLinks.Add(Me.btn_Sync)
-        Me.rpg_Tally.ItemLinks.Add(Me.txt_CompanyName, True)
+        Me.rpg_Tally.ItemLinks.Add(Me.txt_TallyVersion, True)
+        Me.rpg_Tally.ItemLinks.Add(Me.txt_TallyHostURL)
+        Me.rpg_Tally.ItemLinks.Add(Me.txt_CompanyName)
         Me.rpg_Tally.Name = "rpg_Tally"
         Me.rpg_Tally.ShowCaptionButton = False
         Me.rpg_Tally.Text = "Tally"
@@ -426,36 +454,6 @@ Partial Class frm_Main
         Me.rpg_Skins.Name = "rpg_Skins"
         Me.rpg_Skins.ShowCaptionButton = False
         Me.rpg_Skins.Text = "Skins"
-        '
-        'RepositoryItemTextEdit1
-        '
-        Me.RepositoryItemTextEdit1.AutoHeight = False
-        Me.RepositoryItemTextEdit1.Name = "RepositoryItemTextEdit1"
-        '
-        'RepositoryItemFontEdit1
-        '
-        Me.RepositoryItemFontEdit1.AutoHeight = False
-        Me.RepositoryItemFontEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemFontEdit1.Name = "RepositoryItemFontEdit1"
-        '
-        'RepositoryItemSpreadsheetFontSizeEdit1
-        '
-        Me.RepositoryItemSpreadsheetFontSizeEdit1.AutoHeight = False
-        Me.RepositoryItemSpreadsheetFontSizeEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemSpreadsheetFontSizeEdit1.Control = Me.MainSpreadSheet
-        Me.RepositoryItemSpreadsheetFontSizeEdit1.Name = "RepositoryItemSpreadsheetFontSizeEdit1"
-        '
-        'MainSpreadSheet
-        '
-        Me.MainSpreadSheet.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MainSpreadSheet.Location = New System.Drawing.Point(0, 29)
-        Me.MainSpreadSheet.MenuManager = Me.ribbonControl
-        Me.MainSpreadSheet.Name = "MainSpreadSheet"
-        Me.MainSpreadSheet.Options.Import.Csv.Encoding = CType(resources.GetObject("MainSpreadSheet.Options.Import.Csv.Encoding"), System.Text.Encoding)
-        Me.MainSpreadSheet.Options.Import.Txt.Encoding = CType(resources.GetObject("MainSpreadSheet.Options.Import.Txt.Encoding"), System.Text.Encoding)
-        Me.MainSpreadSheet.Size = New System.Drawing.Size(1100, 497)
-        Me.MainSpreadSheet.TabIndex = 1
-        Me.MainSpreadSheet.Text = "spreadsheetControl1"
         '
         'RepositoryItemPopupGalleryEdit1
         '
@@ -572,6 +570,18 @@ Partial Class frm_Main
         Me.ribbonStatusBar.Name = "ribbonStatusBar"
         Me.ribbonStatusBar.Ribbon = Me.ribbonControl
         Me.ribbonStatusBar.Size = New System.Drawing.Size(1100, 31)
+        '
+        'MainSpreadSheet
+        '
+        Me.MainSpreadSheet.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MainSpreadSheet.Location = New System.Drawing.Point(0, 29)
+        Me.MainSpreadSheet.MenuManager = Me.ribbonControl
+        Me.MainSpreadSheet.Name = "MainSpreadSheet"
+        Me.MainSpreadSheet.Options.Import.Csv.Encoding = CType(resources.GetObject("MainSpreadSheet.Options.Import.Csv.Encoding"), System.Text.Encoding)
+        Me.MainSpreadSheet.Options.Import.Txt.Encoding = CType(resources.GetObject("MainSpreadSheet.Options.Import.Txt.Encoding"), System.Text.Encoding)
+        Me.MainSpreadSheet.Size = New System.Drawing.Size(1100, 497)
+        Me.MainSpreadSheet.TabIndex = 1
+        Me.MainSpreadSheet.Text = "spreadsheetControl1"
         '
         'popupControlContainer1
         '
@@ -696,10 +706,9 @@ Partial Class frm_Main
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_CompanyNameEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_TallyVersionEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_TallyHostURLEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemSpreadsheetFontSizeEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.popupControlContainer1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -725,15 +734,12 @@ Partial Class frm_Main
     Private WithEvents formulaBarNameBoxSplitContainerControl As DevExpress.XtraEditors.SplitContainerControl
     Private WithEvents txt_NameBox As DevExpress.XtraSpreadsheet.SpreadsheetNameBoxControl
     Private WithEvents txt_FormulaBar As DevExpress.XtraSpreadsheet.SpreadsheetFormulaBarControl
-    Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents btn_Filter As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarCheckItem
     Friend WithEvents btn_FilterClear As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents btn_Paste As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents btn_Cut As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents btn_Copy As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents btn_PasteSpecial As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
-    Friend WithEvents RepositoryItemFontEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemFontEdit
-    Friend WithEvents RepositoryItemSpreadsheetFontSizeEdit1 As DevExpress.XtraSpreadsheet.Design.RepositoryItemSpreadsheetFontSizeEdit
     Friend WithEvents btn_WrapText As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarCheckItem
     Friend WithEvents RepositoryItemPopupGalleryEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit
     Friend WithEvents btn_IncreaseDecimal As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
@@ -763,4 +769,8 @@ Partial Class frm_Main
     Friend WithEvents txt_CompanyName As DevExpress.XtraBars.BarEditItem
     Friend WithEvents txt_CompanyNameEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents txt_TallyVersion As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txt_TallyVersionEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents txt_TallyHostURL As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txt_TallyHostURLEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

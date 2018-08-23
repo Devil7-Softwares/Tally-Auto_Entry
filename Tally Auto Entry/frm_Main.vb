@@ -96,6 +96,11 @@ Public Class frm_Main
         Next
     End Sub
 
+    Sub LoadSettings()
+        txt_TallyHostURL.EditValue = My.Settings.TallyHostURL
+        txt_TallyVersion.EditValue = My.Settings.TallyVersion
+    End Sub
+
 #End Region
 
 #Region "Events"
@@ -182,6 +187,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub frm_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
+        LoadSettings()
         NewDocument()
         PrepareSheet()
     End Sub
@@ -206,6 +212,16 @@ Public Class frm_Main
         Next
         btn_Sync.Enabled = True
         MainProgressPanel.Visible = False
+    End Sub
+
+    Private Sub txt_TallyHostURL_EditValueChanged(sender As Object, e As EventArgs) Handles txt_TallyHostURL.EditValueChanged
+        My.Settings.TallyHostURL = txt_TallyHostURL.EditValue
+        My.Settings.Save()
+    End Sub
+
+    Private Sub txt_TallyVersion_EditValueChanged(sender As Object, e As EventArgs) Handles txt_TallyVersion.EditValueChanged
+        My.Settings.TallyVersion = txt_TallyVersion.EditValue
+        My.Settings.Save()
     End Sub
 
 #End Region
