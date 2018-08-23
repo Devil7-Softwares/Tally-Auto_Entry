@@ -117,10 +117,16 @@ Namespace Classes
         End Function
 #End Region
 
-        Friend Async Sub LoadAllLedgers()
-            Dim RequestData As String = Await SendRequestToTally(Requests.GetAllLedgers)
-            ReadXML(RequestData)
-        End Sub
+        Friend Async Function LoadAllLedgers() As Threading.Tasks.Task(Of Boolean)
+            Try
+                Dim RequestData As String = Await SendRequestToTally(Requests.GetAllLedgers)
+                ReadXML(RequestData)
+                Return True
+            Catch ex As Exception
+                MsgBox("Error on loading ledgers." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+                Return False
+            End Try
+        End Function
 
     End Class
 End Namespace

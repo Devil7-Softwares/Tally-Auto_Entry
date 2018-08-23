@@ -197,12 +197,10 @@ Public Class frm_Main
         MainProgressPanel.Description = "Syncronizing with Tally..."
         MainProgressPanel.Visible = True
         Dim Values As New List(Of CellValue)
-        Await Threading.Tasks.Task.Run(Sub()
-                                           Tally.LoadAllLedgers()
-                                           For Each i As String In Tally.Ledgers
-                                               Values.Add(i)
-                                           Next
-                                       End Sub)
+        If Not Await Tally.LoadAllLedgers Then GoTo Finish
+        For Each i As String In Tally.Ledgers
+            Values.Add(i)
+        Next
         txt_CompanyName.EditValue = Tally.CompanyName
         For Each i As Integer In LedgerNameColumns
             Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
@@ -210,6 +208,7 @@ Public Class frm_Main
             MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.Color = Color.Red
             MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
         Next
+Finish:
         btn_Sync.Enabled = True
         MainProgressPanel.Visible = False
     End Sub
