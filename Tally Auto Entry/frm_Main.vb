@@ -32,6 +32,7 @@ Public Class frm_Main
     Dim LedgerNameColumns As New List(Of Integer)({6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39})
     Dim EffectColumns As New List(Of Integer)({7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40})
     Dim AmountColumns As New List(Of Integer)({8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41})
+    Dim LastColumnIndex As Integer = 0
 
     Dim Tally As New Classes.TallyIO
 
@@ -70,7 +71,9 @@ Public Class frm_Main
     Sub PrepareSheet()
         Dim VoucherEntrySheet As DevExpress.Spreadsheet.Worksheet = MainSpreadSheet.Document.Worksheets("Vouchers")
         MainSpreadSheet.Document.Worksheets.ActiveWorksheet = VoucherEntrySheet
-        MainSpreadSheet.WorksheetDisplayArea.SetSize(MainSpreadSheet.ActiveWorksheet.Index, (6 + (3 * My.Settings.NumberOfColumns)), 99999)
+        Dim MaxColumn As Integer = (6 + (3 * My.Settings.NumberOfColumns))
+        LastColumnIndex = MaxColumn - 1
+        MainSpreadSheet.WorksheetDisplayArea.SetSize(MainSpreadSheet.ActiveWorksheet.Index, MaxColumn, 99999)
         For Each i As Integer In LedgerNameColumns
             MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.Color = Color.Red
             MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
@@ -221,6 +224,18 @@ Finish:
     Private Sub txt_TallyVersion_EditValueChanged(sender As Object, e As EventArgs) Handles txt_TallyVersion.EditValueChanged
         My.Settings.TallyVersion = txt_TallyVersion.EditValue
         My.Settings.Save()
+    End Sub
+
+    Private Sub MainSpreadSheet_KeyDown(sender As Object, e As KeyEventArgs) Handles MainSpreadSheet.KeyDown
+        If e.KeyCode = Keys.Enter AndAlso (e.Control Or MainSpreadSheet.ActiveCell.ColumnIndex = LastColumnIndex) Then
+            If MainSpreadSheet.ActiveSheet.Name = "Vouchers" Then
+                MainSpreadSheet.SelectedCell = MainSpreadSheet.Document.Range("B" & MainSpreadSheet.ActiveCell.RowIndex + 2)
+                MainSpreadSheet.ActiveWorksheet.ScrollToColumn(0)
+            Else
+                Exit Sub
+            End If
+            e.Handled = True
+        End If
     End Sub
 
 #End Region
