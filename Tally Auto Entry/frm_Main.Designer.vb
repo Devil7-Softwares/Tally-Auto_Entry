@@ -29,7 +29,6 @@ Partial Class frm_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Main))
         Dim ReduceOperation1 As DevExpress.XtraBars.Ribbon.ReduceOperation = New DevExpress.XtraBars.Ribbon.ReduceOperation()
         Dim GalleryItemGroup1 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
@@ -45,14 +44,14 @@ Partial Class frm_Main
         Dim SpreadsheetCommandGalleryItem10 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
         Dim SpreadsheetCommandGalleryItem11 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
         Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
-        Me.MainMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
+        Me.MainMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu()
         Me.btn_New = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Open = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Save = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_SaveAs = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_DocumentInfo = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Exit = New DevExpress.XtraBars.BarButtonItem()
-        Me.ribbonImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.ribbonImageCollection = New DevExpress.Utils.ImageCollection()
         Me.rgb_Skins = New DevExpress.XtraBars.RibbonGalleryBarItem()
         Me.btn_Filter = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarCheckItem()
         Me.btn_FilterClear = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
@@ -68,9 +67,13 @@ Partial Class frm_Main
         Me.btn_Replace = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Undo = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Redo = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
-        Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.btn_Sync = New DevExpress.XtraBars.BarButtonItem()
+        Me.txt_CompanyName = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_CompanyNameEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection()
         Me.rp_Home = New DevExpress.XtraSpreadsheet.UI.HomeRibbonPage()
         Me.rpg_Clipboard = New DevExpress.XtraSpreadsheet.UI.ClipboardRibbonPageGroup()
+        Me.rpg_Tally = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rp_Extras = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_CellOptions = New DevExpress.XtraSpreadsheet.UI.FontRibbonPageGroup()
         Me.rpg_Filter = New DevExpress.XtraSpreadsheet.UI.EditingRibbonPageGroup()
@@ -81,9 +84,11 @@ Partial Class frm_Main
         Me.RepositoryItemSpreadsheetFontSizeEdit1 = New DevExpress.XtraSpreadsheet.Design.RepositoryItemSpreadsheetFontSizeEdit()
         Me.MainSpreadSheet = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
         Me.RepositoryItemPopupGalleryEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit()
+        Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
-        Me.popupControlContainer1 = New DevExpress.XtraBars.PopupControlContainer(Me.components)
+        Me.popupControlContainer1 = New DevExpress.XtraBars.PopupControlContainer()
         Me.panel_FormulaBar = New System.Windows.Forms.Panel()
+        Me.MainProgressPanel = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.splitterControl = New DevExpress.XtraEditors.SplitterControl()
         Me.formulaBarNameBoxSplitContainerControl = New DevExpress.XtraEditors.SplitContainerControl()
         Me.txt_NameBox = New DevExpress.XtraSpreadsheet.SpreadsheetNameBoxControl()
@@ -92,11 +97,13 @@ Partial Class frm_Main
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_CompanyNameEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpreadsheetFontSizeEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.popupControlContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_FormulaBar.SuspendLayout()
         CType(Me.formulaBarNameBoxSplitContainerControl, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,15 +118,15 @@ Partial Class frm_Main
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 172
+        Me.ribbonControl.MaxItemId = 175
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home, Me.rp_Extras})
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Undo)
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Redo)
-        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemFontEdit1, Me.RepositoryItemSpreadsheetFontSizeEdit1, Me.RepositoryItemPopupGalleryEdit1})
+        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemFontEdit1, Me.RepositoryItemSpreadsheetFontSizeEdit1, Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit})
         Me.ribbonControl.ShowToolbarCustomizeItem = False
         Me.ribbonControl.Size = New System.Drawing.Size(1100, 143)
         Me.ribbonControl.StatusBar = Me.ribbonStatusBar
@@ -322,6 +329,26 @@ Partial Class frm_Main
         Me.btn_Redo.Id = 397
         Me.btn_Redo.Name = "btn_Redo"
         '
+        'btn_Sync
+        '
+        Me.btn_Sync.Caption = "Sync"
+        Me.btn_Sync.Id = 172
+        Me.btn_Sync.ImageOptions.SvgImage = CType(resources.GetObject("btn_SyncLedgers.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Sync.Name = "btn_Sync"
+        '
+        'txt_CompanyName
+        '
+        Me.txt_CompanyName.Caption = "Company Name"
+        Me.txt_CompanyName.Edit = Me.txt_CompanyNameEdit
+        Me.txt_CompanyName.EditWidth = 200
+        Me.txt_CompanyName.Id = 174
+        Me.txt_CompanyName.Name = "txt_CompanyName"
+        '
+        'txt_CompanyNameEdit
+        '
+        Me.txt_CompanyNameEdit.AutoHeight = False
+        Me.txt_CompanyNameEdit.Name = "txt_CompanyNameEdit"
+        '
         'ribbonImageCollectionLarge
         '
         Me.ribbonImageCollectionLarge.ImageSize = New System.Drawing.Size(32, 32)
@@ -338,7 +365,7 @@ Partial Class frm_Main
         '
         'rp_Home
         '
-        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Clipboard})
+        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Clipboard, Me.rpg_Tally})
         Me.rp_Home.Name = "rp_Home"
         ReduceOperation1.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable
         ReduceOperation1.Group = Nothing
@@ -354,6 +381,14 @@ Partial Class frm_Main
         Me.rpg_Clipboard.ItemLinks.Add(Me.btn_Copy)
         Me.rpg_Clipboard.ItemLinks.Add(Me.btn_PasteSpecial)
         Me.rpg_Clipboard.Name = "rpg_Clipboard"
+        '
+        'rpg_Tally
+        '
+        Me.rpg_Tally.ItemLinks.Add(Me.btn_Sync)
+        Me.rpg_Tally.ItemLinks.Add(Me.txt_CompanyName, True)
+        Me.rpg_Tally.Name = "rpg_Tally"
+        Me.rpg_Tally.ShowCaptionButton = False
+        Me.rpg_Tally.Text = "Tally"
         '
         'rp_Extras
         '
@@ -526,6 +561,11 @@ Partial Class frm_Main
         Me.RepositoryItemPopupGalleryEdit1.ShowPopupCloseButton = False
         Me.RepositoryItemPopupGalleryEdit1.ShowSizeGrip = False
         '
+        'RepositoryItemTextEdit2
+        '
+        Me.RepositoryItemTextEdit2.AutoHeight = False
+        Me.RepositoryItemTextEdit2.Name = "RepositoryItemTextEdit2"
+        '
         'ribbonStatusBar
         '
         Me.ribbonStatusBar.Location = New System.Drawing.Point(0, 669)
@@ -547,6 +587,7 @@ Partial Class frm_Main
         '
         'panel_FormulaBar
         '
+        Me.panel_FormulaBar.Controls.Add(Me.MainProgressPanel)
         Me.panel_FormulaBar.Controls.Add(Me.MainSpreadSheet)
         Me.panel_FormulaBar.Controls.Add(Me.splitterControl)
         Me.panel_FormulaBar.Controls.Add(Me.formulaBarNameBoxSplitContainerControl)
@@ -555,6 +596,19 @@ Partial Class frm_Main
         Me.panel_FormulaBar.Name = "panel_FormulaBar"
         Me.panel_FormulaBar.Size = New System.Drawing.Size(1100, 526)
         Me.panel_FormulaBar.TabIndex = 3
+        '
+        'MainProgressPanel
+        '
+        Me.MainProgressPanel.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.MainProgressPanel.Appearance.Options.UseBackColor = True
+        Me.MainProgressPanel.BarAnimationElementThickness = 2
+        Me.MainProgressPanel.ContentAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.MainProgressPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MainProgressPanel.Location = New System.Drawing.Point(0, 29)
+        Me.MainProgressPanel.Name = "MainProgressPanel"
+        Me.MainProgressPanel.Size = New System.Drawing.Size(1100, 497)
+        Me.MainProgressPanel.TabIndex = 5
+        Me.MainProgressPanel.Visible = False
         '
         'splitterControl
         '
@@ -641,11 +695,13 @@ Partial Class frm_Main
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_CompanyNameEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemSpreadsheetFontSizeEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.popupControlContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_FormulaBar.ResumeLayout(False)
         CType(Me.formulaBarNameBoxSplitContainerControl, System.ComponentModel.ISupportInitialize).EndInit()
@@ -701,4 +757,10 @@ Partial Class frm_Main
     Friend WithEvents MainMenu As ApplicationMenu
     Friend WithEvents rp_Extras As RibbonPage
     Friend WithEvents rpg_Find As RibbonPageGroup
+    Friend WithEvents btn_Sync As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Tally As RibbonPageGroup
+    Friend WithEvents MainProgressPanel As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents txt_CompanyName As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txt_CompanyNameEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

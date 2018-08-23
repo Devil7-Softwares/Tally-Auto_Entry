@@ -33,6 +33,8 @@ Public Class frm_Main
     Dim EffectColumns As New List(Of Integer)({7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40})
     Dim AmountColumns As New List(Of Integer)({8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41})
 
+    Dim Tally As New Classes.TallyIO
+
 #End Region
 
 #Region "Subs"
@@ -45,7 +47,6 @@ Public Class frm_Main
     Private Sub InitSkinGallery()
         SkinHelper.InitSkinGallery(rgb_Skins, True)
     End Sub
-
 
     Sub NewDocument()
         MainSpreadSheet.CreateNewDocument()
@@ -69,11 +70,8 @@ Public Class frm_Main
     Sub PrepareSheet()
         Dim VoucherEntrySheet As DevExpress.Spreadsheet.Worksheet = MainSpreadSheet.Document.Worksheets("Vouchers")
         MainSpreadSheet.Document.Worksheets.ActiveWorksheet = VoucherEntrySheet
-        Dim Values As New List(Of DevExpress.Spreadsheet.CellValue)
         MainSpreadSheet.WorksheetDisplayArea.SetSize(MainSpreadSheet.ActiveWorksheet.Index, (6 + (3 * My.Settings.NumberOfColumns)), 99999)
         For Each i As Integer In LedgerNameColumns
-            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
-            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(Values.ToArray))
             MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.Color = Color.Red
             MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
         Next
@@ -186,6 +184,28 @@ Public Class frm_Main
     Private Sub frm_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
         NewDocument()
         PrepareSheet()
+    End Sub
+
+    Private Async Sub btn_SyncLedgers_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Sync.ItemClick
+        btn_Sync.Enabled = False
+        MainProgressPanel.Description = "Syncronizing with Tally..."
+        MainProgressPanel.Visible = True
+        Dim Values As New List(Of CellValue)
+        Await Threading.Tasks.Task.Run(Sub()
+                                           Tally.LoadAllLedgers()
+                                           For Each i As String In Tally.Ledgers
+                                               Values.Add(i)
+                                           Next
+                                       End Sub)
+        txt_CompanyName.EditValue = Tally.CompanyName
+        For Each i As Integer In LedgerNameColumns
+            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
+            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(Values.ToArray))
+            MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.Color = Color.Red
+            MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
+        Next
+        btn_Sync.Enabled = True
+        MainProgressPanel.Visible = False
     End Sub
 
 #End Region

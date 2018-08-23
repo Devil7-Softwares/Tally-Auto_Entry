@@ -77,6 +77,30 @@ Namespace My
                 Me("NumberOfColumns") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1.1")>  _
+        Public Property TallyVersion() As String
+            Get
+                Return CType(Me("TallyVersion"),String)
+            End Get
+            Set
+                Me("TallyVersion") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://localhost:9000")>  _
+        Public Property TallyHostURL() As String
+            Get
+                Return CType(Me("TallyHostURL"),String)
+            End Get
+            Set
+                Me("TallyHostURL") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

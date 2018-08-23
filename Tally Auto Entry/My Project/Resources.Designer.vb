@@ -59,5 +59,29 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;ENVELOPE&gt;
+        '''&lt;HEADER&gt;
+        '''&lt;VERSION&gt;&lt;&lt;version&gt;&gt;&lt;/VERSION&gt;
+        '''&lt;TALLYREQUEST&gt;Export&lt;/TALLYREQUEST&gt;
+        '''&lt;TYPE&gt;Data&lt;/TYPE&gt;
+        '''&lt;ID&gt;List of Accounts&lt;/ID&gt;
+        '''&lt;/HEADER&gt;
+        '''&lt;BODY&gt;
+        '''&lt;DESC&gt;
+        '''&lt;STATICVARIABLES&gt;
+        '''&lt;EXPLODEFLAG&gt;Yes&lt;/EXPLODEFLAG&gt;
+        '''&lt;SVEXPORTFORMAT&gt;$$SysName:XML&lt;/SVEXPORTFORMAT&gt;
+        '''&lt;/STATICVARIABLES&gt;
+        '''&lt;/DESC&gt;
+        '''&lt;/BODY&gt;
+        '''&lt;/ENVELOPE&gt;.
+        '''</summary>
+        Friend ReadOnly Property GetAllLedgerRequest() As String
+            Get
+                Return ResourceManager.GetString("GetAllLedgerRequest", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
