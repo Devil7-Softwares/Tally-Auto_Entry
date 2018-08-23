@@ -117,9 +117,13 @@ Partial Class frm_Main
         Me.ribbonControl.MaxItemId = 172
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home, Me.rp_Extras})
+        Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Undo)
+        Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Redo)
         Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemFontEdit1, Me.RepositoryItemSpreadsheetFontSizeEdit1, Me.RepositoryItemPopupGalleryEdit1})
+        Me.ribbonControl.ShowToolbarCustomizeItem = False
         Me.ribbonControl.Size = New System.Drawing.Size(1100, 143)
         Me.ribbonControl.StatusBar = Me.ribbonStatusBar
+        Me.ribbonControl.Toolbar.ShowCustomizeItem = False
         '
         'MainMenu
         '
@@ -412,8 +416,8 @@ Partial Class frm_Main
         Me.MainSpreadSheet.Location = New System.Drawing.Point(0, 29)
         Me.MainSpreadSheet.MenuManager = Me.ribbonControl
         Me.MainSpreadSheet.Name = "MainSpreadSheet"
-        Me.MainSpreadSheet.Options.Import.Csv.Encoding = CType(resources.GetObject("spreadsheetControl.Options.Import.Csv.Encoding"), System.Text.Encoding)
-        Me.MainSpreadSheet.Options.Import.Txt.Encoding = CType(resources.GetObject("spreadsheetControl.Options.Import.Txt.Encoding"), System.Text.Encoding)
+        Me.MainSpreadSheet.Options.Import.Csv.Encoding = CType(resources.GetObject("MainSpreadSheet.Options.Import.Csv.Encoding"), System.Text.Encoding)
+        Me.MainSpreadSheet.Options.Import.Txt.Encoding = CType(resources.GetObject("MainSpreadSheet.Options.Import.Txt.Encoding"), System.Text.Encoding)
         Me.MainSpreadSheet.Size = New System.Drawing.Size(1100, 497)
         Me.MainSpreadSheet.TabIndex = 1
         Me.MainSpreadSheet.Text = "spreadsheetControl1"
@@ -629,10 +633,11 @@ Partial Class frm_Main
         Me.Controls.Add(Me.popupControlContainer1)
         Me.Controls.Add(Me.ribbonStatusBar)
         Me.Controls.Add(Me.ribbonControl)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_Main"
         Me.Ribbon = Me.ribbonControl
         Me.StatusBar = Me.ribbonStatusBar
-        Me.Text = "Form1"
+        Me.Text = "Devil7 - Tally Auto Entry"
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).EndInit()
