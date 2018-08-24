@@ -29,29 +29,30 @@ Partial Class frm_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Main))
-        Dim ReduceOperation3 As DevExpress.XtraBars.Ribbon.ReduceOperation = New DevExpress.XtraBars.Ribbon.ReduceOperation()
-        Dim GalleryItemGroup3 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
-        Dim SpreadsheetCommandGalleryItem23 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem24 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem25 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem26 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem27 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem28 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem29 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem30 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem31 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem32 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
-        Dim SpreadsheetCommandGalleryItem33 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim ReduceOperation1 As DevExpress.XtraBars.Ribbon.ReduceOperation = New DevExpress.XtraBars.Ribbon.ReduceOperation()
+        Dim GalleryItemGroup1 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim SpreadsheetCommandGalleryItem1 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem2 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem3 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem4 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem5 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem6 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem7 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem8 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem9 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem10 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim SpreadsheetCommandGalleryItem11 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
         Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
-        Me.MainMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu()
+        Me.MainMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
         Me.btn_New = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Open = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Save = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_SaveAs = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_DocumentInfo = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
         Me.btn_Exit = New DevExpress.XtraBars.BarButtonItem()
-        Me.ribbonImageCollection = New DevExpress.Utils.ImageCollection()
+        Me.ribbonImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
         Me.rgb_Skins = New DevExpress.XtraBars.RibbonGalleryBarItem()
         Me.btn_Filter = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarCheckItem()
         Me.btn_FilterClear = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem()
@@ -74,10 +75,16 @@ Partial Class frm_Main
         Me.txt_TallyVersionEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.txt_TallyHostURL = New DevExpress.XtraBars.BarEditItem()
         Me.txt_TallyHostURLEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection()
+        Me.txt_Year_From = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_Year_FromEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
+        Me.txt_Year_To = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_Year_ToEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
+        Me.btn_RefreshDates = New DevExpress.XtraBars.BarButtonItem()
+        Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection(Me.components)
         Me.rp_Home = New DevExpress.XtraSpreadsheet.UI.HomeRibbonPage()
         Me.rpg_Clipboard = New DevExpress.XtraSpreadsheet.UI.ClipboardRibbonPageGroup()
         Me.rpg_Tally = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Date = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rp_Extras = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_CellOptions = New DevExpress.XtraSpreadsheet.UI.FontRibbonPageGroup()
         Me.rpg_Filter = New DevExpress.XtraSpreadsheet.UI.EditingRibbonPageGroup()
@@ -87,7 +94,7 @@ Partial Class frm_Main
         Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.MainSpreadSheet = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
-        Me.popupControlContainer1 = New DevExpress.XtraBars.PopupControlContainer()
+        Me.popupControlContainer1 = New DevExpress.XtraBars.PopupControlContainer(Me.components)
         Me.panel_FormulaBar = New System.Windows.Forms.Panel()
         Me.MainProgressPanel = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.splitterControl = New DevExpress.XtraEditors.SplitterControl()
@@ -101,6 +108,8 @@ Partial Class frm_Main
         CType(Me.txt_CompanyNameEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_TallyVersionEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_TallyHostURLEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_Year_FromEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_Year_ToEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -118,15 +127,15 @@ Partial Class frm_Main
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL, Me.txt_Year_From, Me.txt_Year_To, Me.btn_RefreshDates})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 177
+        Me.ribbonControl.MaxItemId = 180
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home, Me.rp_Extras})
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Undo)
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Redo)
-        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit, Me.txt_TallyVersionEdit, Me.txt_TallyHostURLEdit})
+        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit, Me.txt_TallyVersionEdit, Me.txt_TallyHostURLEdit, Me.txt_Year_FromEdit, Me.txt_Year_ToEdit})
         Me.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.ribbonControl.ShowToolbarCustomizeItem = False
         Me.ribbonControl.Size = New System.Drawing.Size(1100, 143)
@@ -376,6 +385,44 @@ Partial Class frm_Main
         Me.txt_TallyHostURLEdit.AutoHeight = False
         Me.txt_TallyHostURLEdit.Name = "txt_TallyHostURLEdit"
         '
+        'txt_Year_From
+        '
+        Me.txt_Year_From.Caption = "Fin. Year From :"
+        Me.txt_Year_From.Edit = Me.txt_Year_FromEdit
+        Me.txt_Year_From.EditWidth = 60
+        Me.txt_Year_From.Id = 177
+        Me.txt_Year_From.Name = "txt_Year_From"
+        '
+        'txt_Year_FromEdit
+        '
+        Me.txt_Year_FromEdit.AutoHeight = False
+        Me.txt_Year_FromEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txt_Year_FromEdit.Name = "txt_Year_FromEdit"
+        '
+        'txt_Year_To
+        '
+        Me.txt_Year_To.Caption = "Fin. Year To     :"
+        Me.txt_Year_To.Edit = Me.txt_Year_ToEdit
+        Me.txt_Year_To.EditWidth = 60
+        Me.txt_Year_To.Id = 178
+        Me.txt_Year_To.Name = "txt_Year_To"
+        '
+        'txt_Year_ToEdit
+        '
+        Me.txt_Year_ToEdit.AutoHeight = False
+        Me.txt_Year_ToEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txt_Year_ToEdit.Name = "txt_Year_ToEdit"
+        Me.txt_Year_ToEdit.ReadOnly = True
+        '
+        'btn_RefreshDates
+        '
+        Me.btn_RefreshDates.Caption = "  Refresh Date Values"
+        Me.btn_RefreshDates.Id = 179
+        Me.btn_RefreshDates.ImageOptions.SvgImage = CType(resources.GetObject("btn_RefreshDates.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_RefreshDates.Name = "btn_RefreshDates"
+        Me.btn_RefreshDates.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        Me.btn_RefreshDates.SmallWithTextWidth = 145
+        '
         'ribbonImageCollectionLarge
         '
         Me.ribbonImageCollectionLarge.ImageSize = New System.Drawing.Size(32, 32)
@@ -392,14 +439,14 @@ Partial Class frm_Main
         '
         'rp_Home
         '
-        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Clipboard, Me.rpg_Tally})
+        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Clipboard, Me.rpg_Tally, Me.rpg_Date})
         Me.rp_Home.Name = "rp_Home"
-        ReduceOperation3.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable
-        ReduceOperation3.Group = Nothing
-        ReduceOperation3.ItemLinkIndex = 2
-        ReduceOperation3.ItemLinksCount = 0
-        ReduceOperation3.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.Gallery
-        Me.rp_Home.ReduceOperations.Add(ReduceOperation3)
+        ReduceOperation1.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable
+        ReduceOperation1.Group = Nothing
+        ReduceOperation1.ItemLinkIndex = 2
+        ReduceOperation1.ItemLinksCount = 0
+        ReduceOperation1.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.Gallery
+        Me.rp_Home.ReduceOperations.Add(ReduceOperation1)
         '
         'rpg_Clipboard
         '
@@ -418,6 +465,15 @@ Partial Class frm_Main
         Me.rpg_Tally.Name = "rpg_Tally"
         Me.rpg_Tally.ShowCaptionButton = False
         Me.rpg_Tally.Text = "Tally"
+        '
+        'rpg_Date
+        '
+        Me.rpg_Date.ItemLinks.Add(Me.txt_Year_From)
+        Me.rpg_Date.ItemLinks.Add(Me.txt_Year_To)
+        Me.rpg_Date.ItemLinks.Add(Me.btn_RefreshDates)
+        Me.rpg_Date.Name = "rpg_Date"
+        Me.rpg_Date.ShowCaptionButton = False
+        Me.rpg_Date.Text = "Date"
         '
         'rp_Extras
         '
@@ -467,87 +523,87 @@ Partial Class frm_Main
         Me.RepositoryItemPopupGalleryEdit1.Gallery.AutoFitColumns = False
         Me.RepositoryItemPopupGalleryEdit1.Gallery.ColumnCount = 1
         Me.RepositoryItemPopupGalleryEdit1.Gallery.FixedImageSize = False
-        SpreadsheetCommandGalleryItem23.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem23.Caption = "General"
-        SpreadsheetCommandGalleryItem23.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem23.Checked = True
-        SpreadsheetCommandGalleryItem23.CommandName = "FormatNumberGeneral"
-        SpreadsheetCommandGalleryItem23.Description = "No specific format."
-        SpreadsheetCommandGalleryItem23.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem23.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem23.Value = "General"
-        SpreadsheetCommandGalleryItem24.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem24.Caption = "Number"
-        SpreadsheetCommandGalleryItem24.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem24.CommandName = "FormatNumberDecimal"
-        SpreadsheetCommandGalleryItem24.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem24.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem24.Value = "Number"
-        SpreadsheetCommandGalleryItem25.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem25.Caption = "Currency"
-        SpreadsheetCommandGalleryItem25.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem25.CommandName = "FormatNumberAccountingCurrency"
-        SpreadsheetCommandGalleryItem25.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem25.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem25.Value = "Currency"
-        SpreadsheetCommandGalleryItem26.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem26.Caption = "Accounting"
-        SpreadsheetCommandGalleryItem26.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem26.CommandName = "FormatNumberAccountingRegular"
-        SpreadsheetCommandGalleryItem26.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem26.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem26.Value = "Accounting"
-        SpreadsheetCommandGalleryItem27.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem27.Caption = "Short Date"
-        SpreadsheetCommandGalleryItem27.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem27.CommandName = "FormatNumberShortDate"
-        SpreadsheetCommandGalleryItem27.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem27.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem27.Value = "Short Date"
-        SpreadsheetCommandGalleryItem28.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem28.Caption = "Long Date"
-        SpreadsheetCommandGalleryItem28.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem28.CommandName = "FormatNumberLongDate"
-        SpreadsheetCommandGalleryItem28.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem28.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem28.Value = "Long Date"
-        SpreadsheetCommandGalleryItem29.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem29.Caption = "Time"
-        SpreadsheetCommandGalleryItem29.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem29.CommandName = "FormatNumberTime"
-        SpreadsheetCommandGalleryItem29.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem29.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem29.Value = "Time"
-        SpreadsheetCommandGalleryItem30.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem30.Caption = "Percentage"
-        SpreadsheetCommandGalleryItem30.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem30.CommandName = "FormatNumberPercentage"
-        SpreadsheetCommandGalleryItem30.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem30.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem30.Value = "Percentage"
-        SpreadsheetCommandGalleryItem31.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem31.Caption = "Fraction"
-        SpreadsheetCommandGalleryItem31.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem31.CommandName = "FormatNumberFraction"
-        SpreadsheetCommandGalleryItem31.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem31.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem31.Value = "Fraction"
-        SpreadsheetCommandGalleryItem32.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem32.Caption = "Scientific"
-        SpreadsheetCommandGalleryItem32.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem32.CommandName = "FormatNumberScientific"
-        SpreadsheetCommandGalleryItem32.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem32.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem32.Value = "Scientific"
-        SpreadsheetCommandGalleryItem33.AlwaysUpdateDescription = True
-        SpreadsheetCommandGalleryItem33.Caption = "Text"
-        SpreadsheetCommandGalleryItem33.CaptionAsValue = True
-        SpreadsheetCommandGalleryItem33.CommandName = "FormatNumberText"
-        SpreadsheetCommandGalleryItem33.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
-        SpreadsheetCommandGalleryItem33.IsEmptyHint = True
-        SpreadsheetCommandGalleryItem33.Value = "Text"
-        GalleryItemGroup3.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem23, SpreadsheetCommandGalleryItem24, SpreadsheetCommandGalleryItem25, SpreadsheetCommandGalleryItem26, SpreadsheetCommandGalleryItem27, SpreadsheetCommandGalleryItem28, SpreadsheetCommandGalleryItem29, SpreadsheetCommandGalleryItem30, SpreadsheetCommandGalleryItem31, SpreadsheetCommandGalleryItem32, SpreadsheetCommandGalleryItem33})
-        Me.RepositoryItemPopupGalleryEdit1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup3})
+        SpreadsheetCommandGalleryItem1.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem1.Caption = "General"
+        SpreadsheetCommandGalleryItem1.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem1.Checked = True
+        SpreadsheetCommandGalleryItem1.CommandName = "FormatNumberGeneral"
+        SpreadsheetCommandGalleryItem1.Description = "No specific format."
+        SpreadsheetCommandGalleryItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem1.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem1.Value = "General"
+        SpreadsheetCommandGalleryItem2.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem2.Caption = "Number"
+        SpreadsheetCommandGalleryItem2.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem2.CommandName = "FormatNumberDecimal"
+        SpreadsheetCommandGalleryItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem2.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem2.Value = "Number"
+        SpreadsheetCommandGalleryItem3.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem3.Caption = "Currency"
+        SpreadsheetCommandGalleryItem3.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem3.CommandName = "FormatNumberAccountingCurrency"
+        SpreadsheetCommandGalleryItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem3.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem3.Value = "Currency"
+        SpreadsheetCommandGalleryItem4.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem4.Caption = "Accounting"
+        SpreadsheetCommandGalleryItem4.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem4.CommandName = "FormatNumberAccountingRegular"
+        SpreadsheetCommandGalleryItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem4.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem4.Value = "Accounting"
+        SpreadsheetCommandGalleryItem5.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem5.Caption = "Short Date"
+        SpreadsheetCommandGalleryItem5.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem5.CommandName = "FormatNumberShortDate"
+        SpreadsheetCommandGalleryItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem5.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem5.Value = "Short Date"
+        SpreadsheetCommandGalleryItem6.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem6.Caption = "Long Date"
+        SpreadsheetCommandGalleryItem6.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem6.CommandName = "FormatNumberLongDate"
+        SpreadsheetCommandGalleryItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem6.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem6.Value = "Long Date"
+        SpreadsheetCommandGalleryItem7.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem7.Caption = "Time"
+        SpreadsheetCommandGalleryItem7.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem7.CommandName = "FormatNumberTime"
+        SpreadsheetCommandGalleryItem7.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem7.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem7.Value = "Time"
+        SpreadsheetCommandGalleryItem8.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem8.Caption = "Percentage"
+        SpreadsheetCommandGalleryItem8.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem8.CommandName = "FormatNumberPercentage"
+        SpreadsheetCommandGalleryItem8.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem8.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem8.Value = "Percentage"
+        SpreadsheetCommandGalleryItem9.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem9.Caption = "Fraction"
+        SpreadsheetCommandGalleryItem9.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem9.CommandName = "FormatNumberFraction"
+        SpreadsheetCommandGalleryItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem9.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem9.Value = "Fraction"
+        SpreadsheetCommandGalleryItem10.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem10.Caption = "Scientific"
+        SpreadsheetCommandGalleryItem10.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem10.CommandName = "FormatNumberScientific"
+        SpreadsheetCommandGalleryItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem10.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem10.Value = "Scientific"
+        SpreadsheetCommandGalleryItem11.AlwaysUpdateDescription = True
+        SpreadsheetCommandGalleryItem11.Caption = "Text"
+        SpreadsheetCommandGalleryItem11.CaptionAsValue = True
+        SpreadsheetCommandGalleryItem11.CommandName = "FormatNumberText"
+        SpreadsheetCommandGalleryItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem11.IsEmptyHint = True
+        SpreadsheetCommandGalleryItem11.Value = "Text"
+        GalleryItemGroup1.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem1, SpreadsheetCommandGalleryItem2, SpreadsheetCommandGalleryItem3, SpreadsheetCommandGalleryItem4, SpreadsheetCommandGalleryItem5, SpreadsheetCommandGalleryItem6, SpreadsheetCommandGalleryItem7, SpreadsheetCommandGalleryItem8, SpreadsheetCommandGalleryItem9, SpreadsheetCommandGalleryItem10, SpreadsheetCommandGalleryItem11})
+        Me.RepositoryItemPopupGalleryEdit1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup1})
         Me.RepositoryItemPopupGalleryEdit1.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.MiddleLeft
         Me.RepositoryItemPopupGalleryEdit1.Gallery.ItemImageLocation = DevExpress.Utils.Locations.Left
         Me.RepositoryItemPopupGalleryEdit1.Gallery.RowCount = 11
@@ -710,6 +766,8 @@ Partial Class frm_Main
         CType(Me.txt_CompanyNameEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_TallyVersionEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_TallyHostURLEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_Year_FromEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_Year_ToEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -775,4 +833,10 @@ Partial Class frm_Main
     Friend WithEvents txt_TallyVersionEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents txt_TallyHostURL As DevExpress.XtraBars.BarEditItem
     Friend WithEvents txt_TallyHostURLEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents txt_Year_From As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txt_Year_FromEdit As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
+    Friend WithEvents txt_Year_To As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txt_Year_ToEdit As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
+    Friend WithEvents btn_RefreshDates As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Date As RibbonPageGroup
 End Class

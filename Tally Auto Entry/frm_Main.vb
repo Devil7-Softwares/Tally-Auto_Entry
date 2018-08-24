@@ -104,6 +104,38 @@ Public Class frm_Main
         txt_TallyVersion.EditValue = My.Settings.TallyVersion
     End Sub
 
+    Function GetDate(ByVal Day As Integer, ByVal Month As Integer)
+        If Month >= 4 Then
+            Return New Date(txt_Year_From.EditValue, Month, Day)
+        Else
+            Return New Date(txt_Year_To.EditValue, Month, Day)
+        End If
+    End Function
+
+    Sub PreCalculateValue(ByVal e As SpreadsheetCellEventArgs, ByVal AddIndex As Boolean)
+        Dim ColumnIndex As Integer = If(AddIndex, e.ColumnIndex + 1, e.ColumnIndex)
+        Dim Index As Integer = EffectColumns.IndexOf(ColumnIndex)
+
+        Dim ValueCell As Cell = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, AmountColumns(Index))
+        Dim EffectCell As CellValue = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, EffectColumns(Index)).Value
+        Dim PrimaryEffect As String = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, EffectColumns(0)).Value.TextValue
+        If ValueCell.Value.ToString = "" AndAlso EffectCell.TextValue <> "" AndAlso EffectCell.TextValue <> PrimaryEffect Then
+            Dim Value As Integer = 0
+            For i As Integer = 0 To Index - 1
+                Dim EffectCell_ As CellValue = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, EffectColumns(i)).Value
+                Dim ValueCell_ As CellValue = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, AmountColumns(i)).Value
+                If ValueCell_.IsNumeric Then
+                    If EffectCell_.TextValue = PrimaryEffect Then
+                        Value += ValueCell_.NumericValue
+                    Else
+                        Value -= ValueCell_.NumericValue
+                    End If
+                End If
+            Next
+            ValueCell.SetValue(Value)
+        End If
+    End Sub
+
 #End Region
 
 #Region "Events"
@@ -193,6 +225,8 @@ Public Class frm_Main
         LoadSettings()
         NewDocument()
         PrepareSheet()
+        txt_Year_FromEdit.MaxValue = Now.Year
+        txt_Year_From.EditValue = Now.Year - 1
     End Sub
 
     Private Async Sub btn_SyncLedgers_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Sync.ItemClick
@@ -235,6 +269,45 @@ Finish:
                 Exit Sub
             End If
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txt_Year_From_EditValueChanged(sender As Object, e As EventArgs) Handles txt_Year_From.EditValueChanged
+        txt_Year_To.EditValue = txt_Year_From.EditValue + 1
+    End Sub
+
+    Private Sub MainSpreadSheet_CellValueChanged(sender As Object, e As SpreadsheetCellEventArgs) Handles MainSpreadSheet.CellValueChanged
+        If MainSpreadSheet.ActiveSheet.Name = "Vouchers" Then
+            If e.ColumnIndex = 2 Or e.ColumnIndex = 3 Then
+                If e.Value.ToString <> "" AndAlso e.Value.IsNumeric = False Then
+                    MsgBox("Only numeric values are allowed.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+                    e.Cell.SetValue(e.OldValue.ToObject)
+                Else
+                    Dim MonthCell As CellValue = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, 3).Value
+                    Dim DayCell As CellValue = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, 2).Value
+                    If MonthCell.IsNumeric And DayCell.IsNumeric Then
+                        Dim DateCell = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, 0)
+                        DateCell.SetValue(GetDate(DayCell.NumericValue, MonthCell.NumericValue))
+                    End If
+                End If
+            ElseIf e.ColumnIndex = 0 AndAlso e.Action <> CellValueChangedAction.API Then
+                Dim DateCell As CellValue = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, 0).Value
+                If DateCell.IsDateTime Then
+                    MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, 3).SetValue(DateCell.DateTimeValue.Month)
+                    MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, 2).SetValue(DateCell.DateTimeValue.Day)
+                End If
+            ElseIf LedgerNameColumns.Contains(e.ColumnIndex) AndAlso LedgerNameColumns.IndexOf(e.ColumnIndex) > 0 Then
+                Dim PreEffectCell As Cell = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, EffectColumns(LedgerNameColumns.IndexOf(e.ColumnIndex) - 1))
+                Dim EffectCell As Cell = MainSpreadSheet.ActiveWorksheet.Cells.Item(e.RowIndex, EffectColumns(LedgerNameColumns.IndexOf(e.ColumnIndex)))
+                If PreEffectCell.Value.TextValue = "Dr." Then
+                    EffectCell.SetValue("Cr.")
+                ElseIf PreEffectCell.Value.TextValue = "Cr." Then
+                    EffectCell.SetValue("Dr.")
+                End If
+                PreCalculateValue(e, True)
+            ElseIf EffectColumns.Contains(e.ColumnIndex) AndAlso EffectColumns.IndexOf(e.ColumnIndex) > 0 Then
+                PreCalculateValue(e, False)
+            End If
         End If
     End Sub
 
