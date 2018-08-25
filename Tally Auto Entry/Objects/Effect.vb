@@ -18,24 +18,9 @@
 '     Dineshkumar T                                                        '
 '=========================================================================='
 
-Namespace Classes
-    Module PublicFunctions
-
-        Public Function ProcessString(ByVal Text As String) As String
-            Dim R As String = Text
-            R = R.Replace("&amp;", "&")
-            Return R
-        End Function
-
-        Public Function CEffect(ByVal Effect As String) As Objects.Effect
-            Dim E As Objects.Effect = Objects.Effect.Dr
-            If Effect = "Dr." Then
-                E = Objects.Effect.Dr
-            ElseIf Effect = "Cr." Then
-                E = Objects.Effect.Cr
-            End If
-            Return E
-        End Function
-
-    End Module
+Namespace Objects
+    Public Enum Effect
+        Dr
+        Cr
+    End Enum
 End Namespace

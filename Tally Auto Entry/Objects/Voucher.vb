@@ -18,24 +18,30 @@
 '     Dineshkumar T                                                        '
 '=========================================================================='
 
-Namespace Classes
-    Module PublicFunctions
+Namespace Objects
+    Public Class Voucher
 
-        Public Function ProcessString(ByVal Text As String) As String
-            Dim R As String = Text
-            R = R.Replace("&amp;", "&")
-            Return R
-        End Function
+#Region "Subs"
+        Sub New(ByVal VoucherType As String, ByVal VoucherDate As String, ByVal VoucherRef As String, ByVal Narration As String, ByVal Entries As List(Of VoucherEntry))
+            Me.VoucherType = VoucherType
+            Me.Entries = Entries
+            Me.VoucherDate = VoucherDate
+            Me.VoucherRef = VoucherRef
+            Me.Narration = Narration
+        End Sub
+#End Region
 
-        Public Function CEffect(ByVal Effect As String) As Objects.Effect
-            Dim E As Objects.Effect = Objects.Effect.Dr
-            If Effect = "Dr." Then
-                E = Objects.Effect.Dr
-            ElseIf Effect = "Cr." Then
-                E = Objects.Effect.Cr
-            End If
-            Return E
-        End Function
+#Region "Properties"
+        ReadOnly Property Entries As New List(Of VoucherEntry)
 
-    End Module
+        ReadOnly Property VoucherType As String
+
+        ReadOnly Property Narration As String
+
+        ReadOnly Property VoucherRef As String
+
+        ReadOnly Property VoucherDate As String
+#End Region
+
+    End Class
 End Namespace

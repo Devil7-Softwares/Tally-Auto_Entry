@@ -45,17 +45,17 @@ Namespace Classes
 #End Region
 
 #Region "Private Subs & Functions"
-        Private Async Function SendRequestToTally(ByVal pWebRequstStr As String) As Threading.Tasks.Task(Of String)
+        Async Function SendRequestToTally(ByVal pWebRequstStr As String) As Threading.Tasks.Task(Of String)
             Dim lResponseStr As String = ""
             Dim lResult As String = ""
             Try
                 Dim lTallyLocalHost As String = My.Settings.TallyHostURL
                 Dim httpWebRequest As HttpWebRequest = CType(WebRequest.Create(lTallyLocalHost), HttpWebRequest)
                 httpWebRequest.Method = "POST"
-                httpWebRequest.ContentLength = CLng(pWebRequstStr.Length)
                 httpWebRequest.ContentType = "application/x-www-form-urlencoded"
-                Dim lStrmWritr As StreamWriter = New StreamWriter(Await httpWebRequest.GetRequestStreamAsync())
-                lStrmWritr.Write(pWebRequstStr)
+                Dim lStrmWritr As Stream = Await httpWebRequest.GetRequestStreamAsync()
+                Dim Bytes As Byte() = (New Text.ASCIIEncoding).GetBytes(pWebRequstStr)
+                Await lStrmWritr.WriteAsync(Bytes, 0, Bytes.Length)
                 lStrmWritr.Close()
                 Dim lhttpResponse As HttpWebResponse = CType(Await httpWebRequest.GetResponseAsync(), HttpWebResponse)
                 Dim lreceiveStream As Stream = lhttpResponse.GetResponseStream()

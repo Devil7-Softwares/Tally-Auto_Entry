@@ -136,6 +136,32 @@ Public Class frm_Main
         End If
     End Sub
 
+    Function GetVouchers() As List(Of Objects.Voucher)
+        Dim VouchersList As New List(Of Objects.Voucher)
+        For index As Integer = 0 To MainSpreadSheet.Document.Worksheets(0).Rows.LastUsedIndex
+            Dim Row As DevExpress.Spreadsheet.Row = MainSpreadSheet.Document.Worksheets(0).Rows.Item(index)
+            If Not Row.Item(1).Value.IsEmpty Then
+                Dim Entries As New List(Of Objects.VoucherEntry)
+                For i As Integer = 0 To My.Settings.NumberOfColumns - 1
+                    Dim ledgerValue = Row.Item(LedgerNameColumns(i)).Value
+                    If Not ledgerValue.IsEmpty Then
+                        'Try
+                        Dim LedgerName As String = ledgerValue.TextValue.Trim
+                        Dim Effect As String = Row.Item(EffectColumns(i)).Value.TextValue.Trim
+                        Dim Amount As Double = Row.Item(AmountColumns(i)).Value.NumericValue
+                        Entries.Add(New Objects.VoucherEntry(LedgerName, Classes.CEffect(Effect), Amount))
+                        'Catch ex As Exception
+
+                        'End Try
+                    End If
+                Next
+                Dim V As New Objects.Voucher(Row.Item(1).Value.TextValue, Row.Item(0).Value.DateTimeValue.ToString("dd/MM/yyyy"), Row.Item(4).Value.TextValue, Row.Item(5).Value.TextValue, Entries)
+                VouchersList.Add(V)
+            End If
+        Next
+        Return VouchersList
+    End Function
+
 #End Region
 
 #Region "Events"
@@ -309,6 +335,19 @@ Finish:
                 PreCalculateValue(e, False)
             End If
         End If
+    End Sub
+
+    Private Sub btn_GenerateXML_File_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_GenerateXML_File.ItemClick
+        If SaveFileDialog_XML.ShowDialog = DialogResult.OK Then
+            Dim Vouchers As List(Of Objects.Voucher) = GetVouchers()
+            Classes.XMLGenerator.GenerateXML(txt_CompanyName.EditValue, Vouchers, SaveFileDialog_XML.FileName)
+        End If
+    End Sub
+
+    Private Async Sub btn_GenerateXML_Tally_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_GenerateXML_Tally.ItemClick
+        Dim Vouchers As List(Of Objects.Voucher) = GetVouchers()
+        Dim Data As String = Classes.XMLGenerator.GenerateXML(txt_CompanyName.EditValue, Vouchers)
+        My.Computer.FileSystem.WriteAllText("D:\Response.xml", Await Tally.SendRequestToTally(Data), False)
     End Sub
 
 #End Region

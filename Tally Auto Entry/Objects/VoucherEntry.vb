@@ -18,24 +18,23 @@
 '     Dineshkumar T                                                        '
 '=========================================================================='
 
-Namespace Classes
-    Module PublicFunctions
+Namespace Objects
+    Public Class VoucherEntry
 
-        Public Function ProcessString(ByVal Text As String) As String
-            Dim R As String = Text
-            R = R.Replace("&amp;", "&")
-            Return R
-        End Function
+#Region "Subs"
+        Sub New(ByVal LedgerName As String, ByVal Effect As Effect, ByVal Amount As Double)
+            Me.LedgerName = LedgerName
+            Me.Effect = Effect
+            Me.Amount = Amount
+        End Sub
+#End Region
 
-        Public Function CEffect(ByVal Effect As String) As Objects.Effect
-            Dim E As Objects.Effect = Objects.Effect.Dr
-            If Effect = "Dr." Then
-                E = Objects.Effect.Dr
-            ElseIf Effect = "Cr." Then
-                E = Objects.Effect.Cr
-            End If
-            Return E
-        End Function
+#Region "Properties"
+        ReadOnly Property LedgerName As String
 
-    End Module
+        ReadOnly Property Effect As Effect
+
+        ReadOnly Property Amount As Integer
+#End Region
+    End Class
 End Namespace
