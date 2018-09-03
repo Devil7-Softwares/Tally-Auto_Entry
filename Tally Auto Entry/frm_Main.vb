@@ -345,9 +345,20 @@ Finish:
     End Sub
 
     Private Async Sub btn_GenerateXML_Tally_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_GenerateXML_Tally.ItemClick
-        Dim Vouchers As List(Of Objects.Voucher) = GetVouchers()
-        Dim Data As String = Classes.XMLGenerator.GenerateXML(txt_CompanyName.EditValue, Vouchers)
-        My.Computer.FileSystem.WriteAllText("D:\Response.xml", Await Tally.SendRequestToTally(Data), False)
+        Try
+            Dim Vouchers As List(Of Objects.Voucher) = GetVouchers()
+            Dim Data As String = Classes.XMLGenerator.GenerateXML(txt_CompanyName.EditValue, Vouchers)
+            Dim Response As Objects.Response = Await Tally.SendRequestToTally(Data)
+            If Response.Status Then
+                MsgBox(String.Format("Successfully Created {0} Entries.", Response.Created), MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Done")
+            Else
+                Dim Filename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Desktop, String.Format("ErrorReport_{0}.xml", Now.ToString("yyyyMMdd_hhmmss")))
+                My.Computer.FileSystem.WriteAllText(Filename, Response.Data, False)
+                MsgBox("Unknown Error Occured. Error Report Saved to Desktop.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+        End Try
     End Sub
 
 #End Region

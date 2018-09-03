@@ -45,7 +45,7 @@ Namespace Classes
 #End Region
 
 #Region "Private Subs & Functions"
-        Async Function SendRequestToTally(ByVal pWebRequstStr As String) As Threading.Tasks.Task(Of String)
+        Async Function SendRequestToTally(ByVal pWebRequstStr As String) As Threading.Tasks.Task(Of Objects.Response)
             Dim lResponseStr As String = ""
             Dim lResult As String = ""
             Try
@@ -63,11 +63,11 @@ Namespace Classes
                 lResponseStr = lStreamReader.ReadToEnd()
                 lhttpResponse.Close()
                 lStreamReader.Close()
-            Catch __unusedException1__ As Exception
-                Return __unusedException1__.Message
+            Catch ex As Exception
+                Return New Objects.Response(ex.Message, False)
             End Try
             lResult = lResponseStr
-            Return lResult
+            Return New Objects.Response(lResult)
         End Function
 
         Private Sub ReadXML(ByVal RequestData As String)
@@ -119,13 +119,15 @@ Namespace Classes
 
         Friend Async Function LoadAllLedgers() As Threading.Tasks.Task(Of Boolean)
             Try
-                Dim RequestData As String = Await SendRequestToTally(Requests.GetAllLedgers)
-                ReadXML(RequestData)
-                Return True
+                Dim Response As Objects.Response = Await SendRequestToTally(Requests.GetAllLedgers)
+                If Response.Status = True Then
+                    ReadXML(Response.Data)
+                    Return True
+                End If
             Catch ex As Exception
                 MsgBox("Error on loading ledgers." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
-                Return False
             End Try
+            Return False
         End Function
 
     End Class
