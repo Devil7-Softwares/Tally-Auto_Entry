@@ -112,16 +112,16 @@
     <Compile Include="Classes\PublicFunctions.vb" />
     <Compile Include="Classes\Requests.vb" />
     <Compile Include="Classes\XMLGenerator.vb" />
-    <Compile Include="frm_Main.Designer.vb">
+    <Compile Include="Forms\frm_Main.Designer.vb">
       <DependentUpon>frm_Main.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_Main.vb">
+    <Compile Include="Forms\frm_Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Splash.designer.vb">
+    <Compile Include="Forms\frm_Splash.designer.vb">
       <DependentUpon>frm_Splash.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_Splash.vb">
+    <Compile Include="Forms\frm_Splash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -145,10 +145,10 @@
     <Compile Include="Objects\VoucherEntry.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frm_Main.resx">
+    <EmbeddedResource Include="Forms\frm_Main.resx">
       <DependentUpon>frm_Main.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Splash.resx">
+    <EmbeddedResource Include="Forms\frm_Splash.resx">
       <DependentUpon>frm_Splash.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
