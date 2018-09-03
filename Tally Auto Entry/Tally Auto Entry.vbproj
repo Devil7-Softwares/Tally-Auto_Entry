@@ -112,6 +112,9 @@
     <Compile Include="Classes\PublicFunctions.vb" />
     <Compile Include="Classes\Requests.vb" />
     <Compile Include="Classes\XMLGenerator.vb" />
+    <Compile Include="Classes\XtraFormTemp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frm_Main.Designer.vb">
       <DependentUpon>frm_Main.vb</DependentUpon>
     </Compile>
