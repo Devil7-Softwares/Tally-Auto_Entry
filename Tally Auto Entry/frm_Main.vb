@@ -265,6 +265,7 @@ Public Class frm_Main
             Values.Add(i)
         Next
         txt_CompanyName.EditValue = Tally.CompanyName
+        MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName") = Tally.CompanyName
         For Each i As Integer In LedgerNameColumns
             Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
             MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(Values.ToArray))
@@ -359,6 +360,14 @@ Finish:
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
         End Try
+    End Sub
+
+    Private Sub MainSpreadSheet_DocumentLoaded(sender As Object, e As EventArgs) Handles MainSpreadSheet.DocumentLoaded
+        txt_CompanyName.EditValue = MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName").TextValue
+    End Sub
+
+    Private Sub txt_CompanyName_EditValueChanged(sender As Object, e As EventArgs) Handles txt_CompanyName.EditValueChanged
+        MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName") = txt_CompanyName.EditValue
     End Sub
 
 #End Region
