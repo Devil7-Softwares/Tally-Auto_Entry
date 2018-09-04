@@ -366,12 +366,8 @@ Finish:
         txt_CompanyName.EditValue = MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName").TextValue
     End Sub
 
-    Private Sub txt_CompanyName_EditValueChanged(sender As Object, e As EventArgs) Handles txt_CompanyName.EditValueChanged
-        MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName") = txt_CompanyName.EditValue
-    End Sub
-
     Private Sub btn_NewLedger_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_NewLedger.ItemClick
-        Dim d As New frm_NewLedger
+        Dim d As New frm_NewLedger(Tally)
         d.ShowDialog()
     End Sub
 
