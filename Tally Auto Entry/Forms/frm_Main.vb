@@ -370,6 +370,11 @@ Finish:
         MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName") = txt_CompanyName.EditValue
     End Sub
 
+    Private Sub btn_NewLedger_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_NewLedger.ItemClick
+        Dim d As New frm_NewLedger
+        d.ShowDialog()
+    End Sub
+
 #End Region
 
 End Class
