@@ -21,9 +21,16 @@
 Namespace Classes
     Public Class Requests
 
+        Shared Function GetReport(ByVal ReportName As String)
+            Return My.Resources.ReportRequest.Replace("<<version>>", My.Settings.TallyVersion).Replace("<<report>>", ReportName)
+        End Function
+
         Shared Function GetAllLedgers() As String
-            Dim R As String = My.Resources.GetAllLedgerRequest
-            Return R.Replace("<<version>>", My.Settings.TallyVersion)
+            Return GetReport("List of Accounts")
+        End Function
+
+        Shared Function GetAllGroups() As String
+            Return GetReport("Group Summary")
         End Function
 
     End Class

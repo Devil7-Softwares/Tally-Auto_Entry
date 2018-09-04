@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GetAllLedgerRequest" xml:space="preserve">
+  <data name="ReportRequest" xml:space="preserve">
     <value>&lt;ENVELOPE&gt;
 &lt;HEADER&gt;
 &lt;VERSION&gt;&lt;&lt;version&gt;&gt;&lt;/VERSION&gt;
 &lt;TALLYREQUEST&gt;Export&lt;/TALLYREQUEST&gt;
 &lt;TYPE&gt;Data&lt;/TYPE&gt;
-&lt;ID&gt;List of Accounts&lt;/ID&gt;
+&lt;ID&gt;&lt;&lt;report&gt;&gt;&lt;/ID&gt;
 &lt;/HEADER&gt;
 &lt;BODY&gt;
 &lt;DESC&gt;
