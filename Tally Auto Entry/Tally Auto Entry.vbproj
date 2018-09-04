@@ -115,6 +115,12 @@
     <Compile Include="Classes\XtraFormTemp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frm_CustomRequest.designer.vb">
+      <DependentUpon>frm_CustomRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frm_CustomRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frm_Main.Designer.vb">
       <DependentUpon>frm_Main.vb</DependentUpon>
     </Compile>
@@ -154,6 +160,9 @@
     <Compile Include="Objects\VoucherEntry.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frm_CustomRequest.resx">
+      <DependentUpon>frm_CustomRequest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frm_Main.resx">
       <DependentUpon>frm_Main.vb</DependentUpon>
     </EmbeddedResource>

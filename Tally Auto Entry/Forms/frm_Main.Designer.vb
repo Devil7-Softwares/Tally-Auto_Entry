@@ -82,17 +82,21 @@ Partial Class frm_Main
         Me.btn_RefreshDates = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_GenerateXML_File = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_GenerateXML_Tally = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_NewLedger = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_CustomRequest = New DevExpress.XtraBars.BarButtonItem()
         Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection(Me.components)
         Me.rp_Home = New DevExpress.XtraSpreadsheet.UI.HomeRibbonPage()
         Me.rpg_Clipboard = New DevExpress.XtraSpreadsheet.UI.ClipboardRibbonPageGroup()
         Me.rpg_Tally = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Date = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Masters = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_XML = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rp_Extras = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_CellOptions = New DevExpress.XtraSpreadsheet.UI.FontRibbonPageGroup()
         Me.rpg_Filter = New DevExpress.XtraSpreadsheet.UI.EditingRibbonPageGroup()
         Me.rpg_Find = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Skins = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Testing = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RepositoryItemPopupGalleryEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupGalleryEdit()
         Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
@@ -106,8 +110,6 @@ Partial Class frm_Main
         Me.txt_FormulaBar = New DevExpress.XtraSpreadsheet.SpreadsheetFormulaBarControl()
         Me.SpreadsheetBarController1 = New DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController()
         Me.SaveFileDialog_XML = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
-        Me.rpg_Masters = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.btn_NewLedger = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,10 +135,10 @@ Partial Class frm_Main
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL, Me.txt_Year_From, Me.txt_Year_To, Me.btn_RefreshDates, Me.btn_GenerateXML_File, Me.btn_GenerateXML_Tally, Me.btn_NewLedger})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL, Me.txt_Year_From, Me.txt_Year_To, Me.btn_RefreshDates, Me.btn_GenerateXML_File, Me.btn_GenerateXML_Tally, Me.btn_NewLedger, Me.btn_CustomRequest})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 183
+        Me.ribbonControl.MaxItemId = 184
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home, Me.rp_Extras})
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Undo)
@@ -443,6 +445,20 @@ Partial Class frm_Main
         Me.btn_GenerateXML_Tally.ImageOptions.SvgImage = CType(resources.GetObject("btn_GenerateXML_Tally.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btn_GenerateXML_Tally.Name = "btn_GenerateXML_Tally"
         '
+        'btn_NewLedger
+        '
+        Me.btn_NewLedger.Caption = "Create New Ledger"
+        Me.btn_NewLedger.Id = 182
+        Me.btn_NewLedger.ImageOptions.SvgImage = CType(resources.GetObject("btn_NewLedger.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_NewLedger.Name = "btn_NewLedger"
+        '
+        'btn_CustomRequest
+        '
+        Me.btn_CustomRequest.Caption = "Send Custom XML Request to Tally"
+        Me.btn_CustomRequest.Id = 183
+        Me.btn_CustomRequest.ImageOptions.SvgImage = CType(resources.GetObject("btn_CustomRequest.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_CustomRequest.Name = "btn_CustomRequest"
+        '
         'ribbonImageCollectionLarge
         '
         Me.ribbonImageCollectionLarge.ImageSize = New System.Drawing.Size(32, 32)
@@ -495,6 +511,12 @@ Partial Class frm_Main
         Me.rpg_Date.ShowCaptionButton = False
         Me.rpg_Date.Text = "Date"
         '
+        'rpg_Masters
+        '
+        Me.rpg_Masters.ItemLinks.Add(Me.btn_NewLedger)
+        Me.rpg_Masters.Name = "rpg_Masters"
+        Me.rpg_Masters.Text = "Masters"
+        '
         'rpg_XML
         '
         Me.rpg_XML.ItemLinks.Add(Me.btn_GenerateXML_File)
@@ -505,7 +527,7 @@ Partial Class frm_Main
         '
         'rp_Extras
         '
-        Me.rp_Extras.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_CellOptions, Me.rpg_Filter, Me.rpg_Find, Me.rpg_Skins})
+        Me.rp_Extras.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_CellOptions, Me.rpg_Filter, Me.rpg_Find, Me.rpg_Skins, Me.rpg_Testing})
         Me.rp_Extras.Name = "rp_Extras"
         Me.rp_Extras.Text = "Extras"
         '
@@ -539,6 +561,12 @@ Partial Class frm_Main
         Me.rpg_Skins.Name = "rpg_Skins"
         Me.rpg_Skins.ShowCaptionButton = False
         Me.rpg_Skins.Text = "Skins"
+        '
+        'rpg_Testing
+        '
+        Me.rpg_Testing.ItemLinks.Add(Me.btn_CustomRequest)
+        Me.rpg_Testing.Name = "rpg_Testing"
+        Me.rpg_Testing.Text = "Testing"
         '
         'RepositoryItemPopupGalleryEdit1
         '
@@ -779,19 +807,6 @@ Partial Class frm_Main
         Me.SaveFileDialog_XML.Filter = "eXtendted Markeup Language Files (*.xml)|*.xml"
         Me.SaveFileDialog_XML.Title = "Select Path to Save Generated XML"
         '
-        'rpg_Masters
-        '
-        Me.rpg_Masters.ItemLinks.Add(Me.btn_NewLedger)
-        Me.rpg_Masters.Name = "rpg_Masters"
-        Me.rpg_Masters.Text = "Masters"
-        '
-        'btn_NewLedger
-        '
-        Me.btn_NewLedger.Caption = "Create New Ledger"
-        Me.btn_NewLedger.Id = 182
-        Me.btn_NewLedger.ImageOptions.SvgImage = CType(resources.GetObject("btn_NewLedger.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btn_NewLedger.Name = "btn_NewLedger"
-        '
         'frm_Main
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
@@ -892,4 +907,6 @@ Partial Class frm_Main
     Friend WithEvents btn_GenerateXML_Tally As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btn_NewLedger As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents rpg_Masters As RibbonPageGroup
+    Friend WithEvents btn_CustomRequest As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Testing As RibbonPageGroup
 End Class

@@ -375,6 +375,11 @@ Finish:
         d.ShowDialog()
     End Sub
 
+    Private Sub btn_CustomRequest_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_CustomRequest.ItemClick
+        Dim d As New frm_CustomRequest(Tally)
+        d.ShowDialog()
+    End Sub
+
 #End Region
 
 End Class
