@@ -106,7 +106,7 @@ Partial Class frm_CustomRequest
         '
         Me.txt_Request.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
         Me.txt_Request.AutoIndentCharsPatterns = ""
-        Me.txt_Request.AutoScrollMinSize = New System.Drawing.Size(27, 14)
+        Me.txt_Request.AutoScrollMinSize = New System.Drawing.Size(403, 224)
         Me.txt_Request.BackBrush = Nothing
         Me.txt_Request.CharHeight = 14
         Me.txt_Request.CharWidth = 8
@@ -128,6 +128,7 @@ Partial Class frm_CustomRequest
         Me.txt_Request.ServiceColors = CType(resources.GetObject("txt_Request.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
         Me.txt_Request.Size = New System.Drawing.Size(555, 129)
         Me.txt_Request.TabIndex = 0
+        Me.txt_Request.Text = resources.GetString("txt_Request.Text")
         Me.txt_Request.Zoom = 100
         '
         'txt_Response

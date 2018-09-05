@@ -135,6 +135,24 @@
         CgAAAAAAAAAAjQABAAH4/////P///woAAAAAAAAAAKQAAQAB9/////z///8KAAAAAAAAAACWAAEACw==
 </value>
   </data>
+  <data name="txt_Request.Text" xml:space="preserve">
+    <value>&lt;ENVELOPE&gt;
+&lt;HEADER&gt;
+&lt;VERSION&gt;1.1&lt;/VERSION&gt;
+&lt;TALLYREQUEST&gt;Export&lt;/TALLYREQUEST&gt;
+&lt;TYPE&gt;Data&lt;/TYPE&gt;
+&lt;ID&gt;List of Accounts&lt;/ID&gt;
+&lt;/HEADER&gt;
+&lt;BODY&gt;
+&lt;DESC&gt;
+&lt;STATICVARIABLES&gt;
+&lt;EXPLODEFLAG&gt;Yes&lt;/EXPLODEFLAG&gt;
+&lt;SVEXPORTFORMAT&gt;$$SysName:XML&lt;/SVEXPORTFORMAT&gt;
+&lt;/STATICVARIABLES&gt;
+&lt;/DESC&gt;
+&lt;/BODY&gt;
+&lt;/ENVELOPE&gt;</value>
+  </data>
   <data name="txt_Response.ServiceColors" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdGYXN0Q29sb3JlZFRleHRCb3gsIFZlcnNpb249Mi4xNi4yMy4w
