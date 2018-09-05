@@ -25,13 +25,21 @@ Namespace Objects
 
         Sub New(ByVal Data As String)
             Me.Data = Data
-            ReadXML(Data)
+            Try
+                ReadXML(Data)
+            Catch ex As Exception
+
+            End Try
         End Sub
 
         Sub New(ByVal Data As String, ByVal Status As Boolean)
             Me.Status = True
             Me.Data = Data
-            ReadXML(Data)
+            Try
+                ReadXML(Data)
+            Catch ex As Exception
+
+            End Try
         End Sub
 
         Property Data As String = ""
