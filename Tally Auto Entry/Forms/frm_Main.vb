@@ -353,9 +353,7 @@ Finish:
             If Response.Status Then
                 MsgBox(String.Format("Successfully Created {0} Entries.", Response.Created), MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Done")
             Else
-                Dim Filename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Desktop, String.Format("ErrorReport_{0}.xml", Now.ToString("yyyyMMdd_hhmmss")))
-                My.Computer.FileSystem.WriteAllText(Filename, Response.Data, False)
-                MsgBox("Unknown Error Occured. Error Report Saved to Desktop.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+                Classes.PublicFunctions.WriteErrorResponse(Response)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")

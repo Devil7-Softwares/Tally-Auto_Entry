@@ -37,5 +37,11 @@ Namespace Classes
             Return E
         End Function
 
+        Public Sub WriteErrorResponse(ByVal Response As Objects.Response)
+            Dim Filename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Desktop, String.Format("ErrorReport_{0}.xml", Now.ToString("yyyyMMdd_hhmmss")))
+            My.Computer.FileSystem.WriteAllText(Filename, Response.Data, False)
+            MsgBox("Unknown Error Occured. Error Report Saved to Desktop.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+        End Sub
+
     End Module
 End Namespace
