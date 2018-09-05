@@ -33,5 +33,9 @@ Namespace Classes
             Return GetReport("Group Summary")
         End Function
 
+        Shared Function CreateLedger(ByVal CompanyName As String, ByVal LedgerName As String, ByVal Group As String, ByVal Balance As Integer)
+            Return My.Resources.MastersRequest.Replace("<<company>>", CompanyName).Replace("<<ledger>>", LedgerName).Replace("<<group>>", Group).Replace("<<balance>>", Balance)
+        End Function
+
     End Class
 End Namespace

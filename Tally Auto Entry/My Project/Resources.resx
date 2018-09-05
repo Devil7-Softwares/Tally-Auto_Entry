@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="MastersRequest" xml:space="preserve">
+    <value>&lt;ENVELOPE&gt;
+&lt;HEADER&gt;
+&lt;TALLYREQUEST&gt;Import Data&lt;/TALLYREQUEST&gt;
+&lt;/HEADER&gt;
+&lt;BODY&gt;
+&lt;IMPORTDATA&gt;
+&lt;REQUESTDESC&gt;
+&lt;REPORTNAME&gt;All Masters&lt;/REPORTNAME&gt;
+&lt;STATICVARIABLES&gt;
+&lt;SVCURRENTCOMPANY&gt;&lt;&lt;company&gt;&gt;&lt;/SVCURRENTCOMPANY&gt;
+&lt;/STATICVARIABLES&gt;
+&lt;/REQUESTDESC&gt;
+&lt;REQUESTDATA&gt;
+&lt;TALLYMESSAGE xmlns:UDF="TallyUDF"&gt;
+&lt;LEDGER NAME="&lt;&lt;ledger&gt;&gt;" RESERVEDNAME=""&gt;
+&lt;NAME.LIST&gt;
+&lt;NAME&gt;&lt;&lt;ledger&gt;&gt;&lt;/NAME&gt;
+&lt;/NAME.LIST&gt;
+&lt;ADDITIONALNAME&gt;&lt;&lt;ledger&gt;&gt;&lt;/ADDITIONALNAME&gt;
+&lt;PARENT&gt;&lt;&lt;group&gt;&gt;&lt;/PARENT&gt;
+&lt;ISBILLWISEON&gt;No&lt;/ISBILLWISEON&gt;
+&lt;OPENINGBALANCE&gt;&lt;&lt;balance&gt;&gt;&lt;/OPENINGBALANCE&gt;
+&lt;/LEDGER&gt;
+&lt;/TALLYMESSAGE&gt;
+&lt;/REQUESTDATA&gt;
+&lt;/IMPORTDATA&gt;
+&lt;/BODY&gt;
+&lt;/ENVELOPE&gt;</value>
+  </data>
   <data name="ReportRequest" xml:space="preserve">
     <value>&lt;ENVELOPE&gt;
 &lt;HEADER&gt;

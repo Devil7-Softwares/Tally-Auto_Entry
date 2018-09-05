@@ -26,11 +26,18 @@ Imports System.Xml
 Namespace Classes
     Public Class TallyIO
 #Region "Variables"
+        Dim Groups_ As New List(Of String)
         Dim Ledgers_ As New List(Of String)
         Dim CompanyName_ As String = ""
 #End Region
 
 #Region "Properties"
+        ReadOnly Property Groups As List(Of String)
+            Get
+                Return Groups_
+            End Get
+        End Property
+
         ReadOnly Property Ledgers As List(Of String)
             Get
                 Return Ledgers_
@@ -67,7 +74,7 @@ Namespace Classes
                 Return New Objects.Response(ex.Message, False)
             End Try
             lResult = lResponseStr
-            Return New Objects.Response(lResult)
+            Return New Objects.Response(lResult, If(lResult.Contains("STATUS"), False, True))
         End Function
 
         Private Sub ReadXML(ByVal RequestData As String)
@@ -115,7 +122,30 @@ Namespace Classes
             Next
             Return Names.ToArray
         End Function
+
+        Private Sub ReadXML_Groups(ByVal XML As String)
+            Dim Groups As New List(Of String)
+            Dim XDoc As New XmlDocument
+            XDoc.LoadXml(XML)
+            For Each i As XmlNode In XDoc.GetElementsByTagName("DSPDISPNAME")
+                If Not String.IsNullOrEmpty(i.InnerText) Then Groups.Add(i.InnerText)
+            Next
+            If Groups.Count > 0 Then Me.Groups_ = Groups
+        End Sub
 #End Region
+
+        Friend Async Function LoadAllGroups() As Threading.Tasks.Task(Of Boolean)
+            Try
+                Dim Response As Objects.Response = Await SendRequestToTally(Requests.GetAllGroups)
+                If Response.Status = True Then
+                    ReadXML_Groups(Response.Data)
+                    Return True
+                End If
+            Catch ex As Exception
+                MsgBox("Error on loading groups." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+            End Try
+            Return False
+        End Function
 
         Friend Async Function LoadAllLedgers() As Threading.Tasks.Task(Of Boolean)
             Try
@@ -128,6 +158,17 @@ Namespace Classes
                 MsgBox("Error on loading ledgers." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
             End Try
             Return False
+        End Function
+
+        Friend Async Function CreateLedger(ByVal LedgerName As String, ByVal Group As String, ByVal Balance As Integer) As Threading.Tasks.Task(Of Objects.Response)
+            Dim Response As Objects.Response = New Objects.Response("Unknown Error", False)
+            Try
+                Response = Await SendRequestToTally(Requests.CreateLedger(CompanyName, LedgerName, Group, Balance))
+            Catch ex As Exception
+                MsgBox("Error creating ledger." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+                Response = New Objects.Response(ex.Message, False)
+            End Try
+            Return Response
         End Function
 
     End Class

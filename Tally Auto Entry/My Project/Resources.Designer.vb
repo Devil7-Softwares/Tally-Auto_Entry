@@ -63,6 +63,36 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to &lt;ENVELOPE&gt;
         '''&lt;HEADER&gt;
+        '''&lt;TALLYREQUEST&gt;Import Data&lt;/TALLYREQUEST&gt;
+        '''&lt;/HEADER&gt;
+        '''&lt;BODY&gt;
+        '''&lt;IMPORTDATA&gt;
+        '''&lt;REQUESTDESC&gt;
+        '''&lt;REPORTNAME&gt;All Masters&lt;/REPORTNAME&gt;
+        '''&lt;STATICVARIABLES&gt;
+        '''&lt;SVCURRENTCOMPANY&gt;&lt;&lt;company&gt;&gt;&lt;/SVCURRENTCOMPANY&gt;
+        '''&lt;/STATICVARIABLES&gt;
+        '''&lt;/REQUESTDESC&gt;
+        '''&lt;REQUESTDATA&gt;
+        '''&lt;TALLYMESSAGE xmlns:UDF=&quot;TallyUDF&quot;&gt;
+        '''&lt;LEDGER NAME=&quot;&lt;&lt;ledger&gt;&gt;&quot; RESERVEDNAME=&quot;&quot;&gt;
+        '''&lt;NAME.LIST&gt;
+        '''&lt;NAME&gt;&lt;&lt;ledger&gt;&gt;&lt;/NAME&gt;
+        '''&lt;/NAME.LIST&gt;
+        '''&lt;ADDITIONALNAME&gt;&lt;&lt;ledger&gt;&gt;&lt;/ADDITIONALNAME&gt;
+        '''&lt;PARENT&gt;&lt;&lt;group&gt;&gt;&lt;/PARENT&gt;
+        '''&lt;ISBILLWISEON&gt;No&lt;/ISBILLWISEON&gt;
+        '''&lt;OP [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property MastersRequest() As String
+            Get
+                Return ResourceManager.GetString("MastersRequest", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;ENVELOPE&gt;
+        '''&lt;HEADER&gt;
         '''&lt;VERSION&gt;&lt;&lt;version&gt;&gt;&lt;/VERSION&gt;
         '''&lt;TALLYREQUEST&gt;Export&lt;/TALLYREQUEST&gt;
         '''&lt;TYPE&gt;Data&lt;/TYPE&gt;
