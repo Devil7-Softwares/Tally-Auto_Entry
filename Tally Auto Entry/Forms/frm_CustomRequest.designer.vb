@@ -100,7 +100,7 @@ Partial Class frm_CustomRequest
         Me.ProgressPanel.Name = "ProgressPanel"
         Me.ProgressPanel.Size = New System.Drawing.Size(555, 186)
         Me.ProgressPanel.TabIndex = 1
-        Me.ProgressPanel.Text = "ProgressPanel1"
+        Me.ProgressPanel.Visible = False
         '
         'txt_Request
         '
