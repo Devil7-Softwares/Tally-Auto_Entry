@@ -125,6 +125,28 @@ Namespace Classes
                         End If
                         .WriteString(AMT)
                         .WriteEndElement() 'AMOUNT
+                        For Each s As Objects.StockEntry In entry.StockEntries
+                            .WriteStartElement("INVENTORYALLOCATIONS.LIST") 'INVENTORY LIST
+                            .WriteStartElement("STOCKITEMNAME") 'STOCKITEMNAME
+                            .WriteString(s.StockItemName)
+                            .WriteEndElement() 'STOCKITEMNAME
+                            .WriteStartElement("ISDEEMEDPOSITIVE") 'ISDEEMEDPOSITIVE
+                            .WriteString(If(entry.Effect = Objects.Effect.Dr, "Yes", "No"))
+                            .WriteEndElement() 'ISDEEMEDPOSITIVE
+                            .WriteStartElement("AMOUNT") 'AMOUNT
+                            .WriteString(If(entry.Effect = Objects.Effect.Dr, s.Amount * -1, s.Amount))
+                            .WriteEndElement() 'AMOUNT
+                            .WriteStartElement("ACTUALQTY") 'ACTUALQTY
+                            .WriteString(s.Quantity)
+                            .WriteEndElement() 'ACTUALQTY
+                            .WriteStartElement("BILLEDQTY") 'BILLEDQTY
+                            .WriteString(s.Quantity)
+                            .WriteEndElement() 'AMOUNT
+                            .WriteStartElement("RATE") 'RATE
+                            .WriteString(s.Rate)
+                            .WriteEndElement() 'RATE
+                            .WriteEndElement() 'INVENTORY LIST
+                        Next
                         .WriteEndElement() 'ALLLEDGERENTRIES.LIST
                     Next
 

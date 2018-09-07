@@ -136,23 +136,42 @@ Public Class frm_Main
         End If
     End Sub
 
+    Function GetStockEntries() As List(Of Objects.StockEntry)
+        Dim StocksList As New List(Of Objects.StockEntry)
+        For index As Integer = 0 To MainSpreadSheet.Document.Worksheets("Stock").Rows.LastUsedIndex
+            Dim Row As Row = MainSpreadSheet.Document.Worksheets("Stock").Rows.Item(index)
+            If Not Row.Item(1).Value.IsEmpty Then
+                Dim CellAddress As String = Row.Item(0).Value.TextValue
+                Dim NameOfItem As String = Row.Item(1).Value.TextValue
+                Dim Quantity As String = Row.Item(2).Value.NumericValue
+                Dim Rate As String = Row.Item(3).Value.NumericValue
+                Dim Unit As String = Row.Item(4).Value.TextValue
+                Dim Amount As String = Row.Item(5).Value.NumericValue
+                StocksList.Add(New Objects.StockEntry(CellAddress, NameOfItem, Quantity, Rate, Unit, Amount))
+            End If
+        Next
+        Return StocksList
+    End Function
+
     Function GetVouchers() As List(Of Objects.Voucher)
         Dim VouchersList As New List(Of Objects.Voucher)
+        Dim StockEntries As List(Of Objects.StockEntry) = GetStockEntries()
         For index As Integer = 0 To MainSpreadSheet.Document.Worksheets(0).Rows.LastUsedIndex
             Dim Row As DevExpress.Spreadsheet.Row = MainSpreadSheet.Document.Worksheets(0).Rows.Item(index)
             If Not Row.Item(1).Value.IsEmpty Then
                 Dim Entries As New List(Of Objects.VoucherEntry)
                 For i As Integer = 0 To My.Settings.NumberOfColumns - 1
-                    Dim ledgerValue = Row.Item(LedgerNameColumns(i)).Value
+                    Dim LedgerCell = Row.Item(LedgerNameColumns(i))
+                    Dim ledgerValue = LedgerCell.Value
                     If Not ledgerValue.IsEmpty Then
-                        'Try
-                        Dim LedgerName As String = ledgerValue.TextValue.Trim
-                        Dim Effect As String = Row.Item(EffectColumns(i)).Value.TextValue.Trim
-                        Dim Amount As Double = Row.Item(AmountColumns(i)).Value.NumericValue
-                        Entries.Add(New Objects.VoucherEntry(LedgerName, Classes.CEffect(Effect), Amount))
-                        'Catch ex As Exception
+                        Try
+                            Dim LedgerName As String = ledgerValue.TextValue.Trim
+                            Dim Effect As String = Row.Item(EffectColumns(i)).Value.TextValue.Trim
+                            Dim Amount As Double = Row.Item(AmountColumns(i)).Value.NumericValue
+                            Entries.Add(New Objects.VoucherEntry(LedgerName, Classes.CEffect(Effect), Amount, StockEntries.FindAll(Function(c) c.LedgerCell = LedgerCell.GetReferenceA1)))
+                        Catch ex As Exception
 
-                        'End Try
+                        End Try
                     End If
                 Next
                 Dim V As New Objects.Voucher(Row.Item(1).Value.TextValue, Row.Item(0).Value.DateTimeValue.ToString("dd/MM/yyyy"), Row.Item(4).Value.TextValue, Row.Item(5).Value.TextValue, Entries)

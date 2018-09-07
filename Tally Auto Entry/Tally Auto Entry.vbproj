@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Objects\Effect.vb" />
     <Compile Include="Objects\Response.vb" />
+    <Compile Include="Objects\StockEntry.vb" />
     <Compile Include="Objects\Voucher.vb" />
     <Compile Include="Objects\VoucherEntry.vb" />
   </ItemGroup>

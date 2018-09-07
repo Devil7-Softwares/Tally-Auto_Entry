@@ -19,25 +19,32 @@
 '=========================================================================='
 
 Namespace Objects
-    Public Class VoucherEntry
+    Public Class StockEntry
 
 #Region "Subs"
-        Sub New(ByVal LedgerName As String, ByVal Effect As Effect, ByVal Amount As Double, ByVal StockEntries As List(Of StockEntry))
-            Me.LedgerName = LedgerName
-            Me.Effect = Effect
+        Sub New(ByVal LedgerCell As String, ByVal StockItemName As String, ByVal Quantity As Double, ByVal Rate As Double, ByVal Unit As String, ByVal Amount As Double)
+            Me.LedgerCell = LedgerCell
+            Me.StockItemName = StockItemName
+            Me.Quantity = Quantity
+            Me.Rate = Rate
+            Me.Unit = Unit
             Me.Amount = Amount
-            Me.StockEntries = StockEntries
         End Sub
 #End Region
 
 #Region "Properties"
-        ReadOnly Property LedgerName As String
+        ReadOnly Property LedgerCell As String
 
-        ReadOnly Property Effect As Effect
+        ReadOnly Property StockItemName As String
 
-        ReadOnly Property Amount As Integer
+        ReadOnly Property Quantity As Double
 
-        ReadOnly Property StockEntries As List(Of StockEntry)
+        ReadOnly Property Rate As Double
+
+        ReadOnly Property Unit As String
+
+        ReadOnly Property Amount As Double
 #End Region
+
     End Class
 End Namespace
