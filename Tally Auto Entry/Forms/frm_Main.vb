@@ -393,6 +393,12 @@ Finish:
         d.ShowDialog()
     End Sub
 
+    Private Sub MainSpreadSheet_MouseClick(sender As Object, e As MouseEventArgs) Handles MainSpreadSheet.MouseClick
+        If MainSpreadSheet.ActiveSheet.Name = "Vouchers" AndAlso MainSpreadSheet.Focused AndAlso (LedgerNameColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex) Or EffectColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex)) Then
+            MainSpreadSheet.OpenCellEditor(CellEditorMode.Edit)
+        End If
+    End Sub
+
 #End Region
 
 End Class
