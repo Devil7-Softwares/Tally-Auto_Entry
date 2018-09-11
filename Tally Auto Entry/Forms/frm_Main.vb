@@ -279,7 +279,7 @@ Public Class frm_Main
         MainProgressPanel.Description = "Syncronizing with Tally..."
         MainProgressPanel.Visible = True
         Dim Values As New List(Of CellValue)
-        If Not Await Tally.LoadAllLedgers Then GoTo Finish
+        If Not Await Tally.LoadAllMasters Then GoTo Finish
         For Each i As String In Tally.Ledgers
             Values.Add(i)
         Next

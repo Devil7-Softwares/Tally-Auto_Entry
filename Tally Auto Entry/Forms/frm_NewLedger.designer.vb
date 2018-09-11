@@ -83,7 +83,6 @@ Partial Class frm_NewLedger
         Me.cmb_Group.Location = New System.Drawing.Point(107, 33)
         Me.cmb_Group.Name = "cmb_Group"
         Me.cmb_Group.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmb_Group.Properties.Items.AddRange(New Object() {"Bank OCC A/c", "Bank OD A/c", "Branch / Divisions", "Cash-in-Hand", "Current Assets", "Current Liabilities", "Direct Expenses", "Direct Incomes", "Duties & Taxes", "Expenses (Direct)", "Expenses (Indirect)", "Fixed Assets", "Income (Direct)", "Income (Indirect)", "Indirect Expenses", "Indirect Incomes", "Investments", "Loans & Advances (Assets)", "Loans (Liability)", "Misc. Expenses (ASSET)", "Provisions", "Purchase Accounts", "Reserves & Surplus", "Retained Earnings", "Secured Loans", "Stock-in-Hand", "Sundry Creditors", "Sundry Debtors", "Suspense A/c", "Unsecured Loans"})
         Me.cmb_Group.Size = New System.Drawing.Size(290, 20)
         Me.cmb_Group.TabIndex = 1
         '

@@ -62,6 +62,33 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to &lt;ENVELOPE&gt;
+        '''    &lt;HEADER&gt;
+        '''        &lt;VERSION&gt;&lt;&lt;version&gt;&gt;&lt;/VERSION&gt;
+        '''        &lt;TALLYREQUEST&gt;Export&lt;/TALLYREQUEST&gt;
+        '''        &lt;TYPE&gt;Collection&lt;/TYPE&gt;
+        '''        &lt;ID&gt;All Masters&lt;/ID&gt;
+        '''    &lt;/HEADER&gt;
+        '''    &lt;BODY&gt;
+        '''        &lt;DESC&gt;
+        '''            &lt;TDL&gt;
+        '''                &lt;TDLMESSAGE&gt;
+        '''                    &lt;COLLECTION NAME=&quot;All Masters&quot; ISMODIFY=&quot;No&quot;&gt;
+        '''                        &lt;TYPE&gt;Masters&lt;/TYPE&gt;
+        '''                    &lt;/COLLECTION&gt;
+        '''                &lt;/TDLMESSAGE&gt;
+        '''            &lt;/TDL&gt;
+        '''        &lt;/DESC&gt;
+        '''     &lt;/BODY&gt;
+        '''&lt;/ENVELOPE&gt;.
+        '''</summary>
+        Friend ReadOnly Property AllMastersRequest() As String
+            Get
+                Return ResourceManager.GetString("AllMastersRequest", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;ENVELOPE&gt;
         '''&lt;HEADER&gt;
         '''&lt;TALLYREQUEST&gt;Import Data&lt;/TALLYREQUEST&gt;
         '''&lt;/HEADER&gt;
@@ -84,9 +111,9 @@ Namespace My.Resources
         '''&lt;ISBILLWISEON&gt;No&lt;/ISBILLWISEON&gt;
         '''&lt;OP [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property MastersRequest() As String
+        Friend ReadOnly Property CreateLedgerRequest() As String
             Get
-                Return ResourceManager.GetString("MastersRequest", resourceCulture)
+                Return ResourceManager.GetString("CreateLedgerRequest", resourceCulture)
             End Get
         End Property
         

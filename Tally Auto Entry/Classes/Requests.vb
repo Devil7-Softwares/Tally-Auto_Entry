@@ -25,16 +25,12 @@ Namespace Classes
             Return My.Resources.ReportRequest.Replace("<<version>>", My.Settings.TallyVersion).Replace("<<report>>", ReportName)
         End Function
 
-        Shared Function GetAllLedgers() As String
-            Return GetReport("List of Accounts")
-        End Function
-
-        Shared Function GetAllGroups() As String
-            Return GetReport("Group Summary")
+        Shared Function GetAllMasters() As String
+            Return My.Resources.AllMastersRequest.Replace("<<version>>", My.Settings.TallyVersion)
         End Function
 
         Shared Function CreateLedger(ByVal CompanyName As String, ByVal LedgerName As String, ByVal Group As String, ByVal Balance As Integer)
-            Return My.Resources.MastersRequest.Replace("<<company>>", CompanyName).Replace("<<ledger>>", LedgerName).Replace("<<group>>", Group).Replace("<<balance>>", Balance)
+            Return My.Resources.CreateLedgerRequest.Replace("<<company>>", CompanyName).Replace("<<ledger>>", LedgerName).Replace("<<group>>", Group).Replace("<<balance>>", Balance)
         End Function
 
     End Class

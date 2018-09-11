@@ -117,7 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MastersRequest" xml:space="preserve">
+  <data name="AllMastersRequest" xml:space="preserve">
+    <value>&lt;ENVELOPE&gt;
+    &lt;HEADER&gt;
+        &lt;VERSION&gt;&lt;&lt;version&gt;&gt;&lt;/VERSION&gt;
+        &lt;TALLYREQUEST&gt;Export&lt;/TALLYREQUEST&gt;
+        &lt;TYPE&gt;Collection&lt;/TYPE&gt;
+        &lt;ID&gt;All Masters&lt;/ID&gt;
+    &lt;/HEADER&gt;
+    &lt;BODY&gt;
+        &lt;DESC&gt;
+            &lt;TDL&gt;
+                &lt;TDLMESSAGE&gt;
+                    &lt;COLLECTION NAME="All Masters" ISMODIFY="No"&gt;
+                        &lt;TYPE&gt;Masters&lt;/TYPE&gt;
+                    &lt;/COLLECTION&gt;
+                &lt;/TDLMESSAGE&gt;
+            &lt;/TDL&gt;
+        &lt;/DESC&gt;
+     &lt;/BODY&gt;
+&lt;/ENVELOPE&gt;</value>
+  </data>
+  <data name="CreateLedgerRequest" xml:space="preserve">
     <value>&lt;ENVELOPE&gt;
 &lt;HEADER&gt;
 &lt;TALLYREQUEST&gt;Import Data&lt;/TALLYREQUEST&gt;

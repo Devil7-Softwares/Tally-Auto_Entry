@@ -12,7 +12,6 @@
                    ControlBox = False
                    ProgressPanel1.Visible = True
                End Sub)
-        Await Tally.LoadAllGroups()
         If Tally.Groups.Count > 0 Then
             For Each i As String In Tally.Groups
                 If Not cmb_Group.Properties.Items.Contains(i) Then cmb_Group.Properties.Items.Add(i)

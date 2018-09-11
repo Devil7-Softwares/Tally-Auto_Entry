@@ -26,12 +26,26 @@ Imports System.Xml
 Namespace Classes
     Public Class TallyIO
 #Region "Variables"
+        Dim StockItems_ As New List(Of String)
+        Dim Units_ As New List(Of String)
         Dim Groups_ As New List(Of String)
         Dim Ledgers_ As New List(Of String)
         Dim CompanyName_ As String = ""
 #End Region
 
 #Region "Properties"
+        ReadOnly Property StockItems As List(Of String)
+            Get
+                Return StockItems_
+            End Get
+        End Property
+
+        ReadOnly Property Units As List(Of String)
+            Get
+                Return Units_
+            End Get
+        End Property
+
         ReadOnly Property Groups As List(Of String)
             Get
                 Return Groups_
@@ -79,6 +93,9 @@ Namespace Classes
 
         Private Sub ReadXML(ByVal RequestData As String)
             Dim Ledgers As New List(Of String)
+            Dim Groups As New List(Of String)
+            Dim Units As New List(Of String)
+            Dim StockItems As New List(Of String)
             Dim m_xmlr As New XmlTextReader(New IO.MemoryStream(System.Text.Encoding.ASCII.GetBytes(RequestData)))
             m_xmlr.WhitespaceHandling = WhitespaceHandling.None
             m_xmlr.Read()
@@ -94,10 +111,19 @@ Namespace Classes
                     For Each i As String In Names
                         Ledgers.Add(ProcessString(i))
                     Next
+                ElseIf m_xmlr.Name = "GROUP" AndAlso m_xmlr.GetAttribute("NAME") IsNot Nothing Then
+                    Groups.Add(m_xmlr.GetAttribute("NAME"))
+                ElseIf m_xmlr.Name = "UNIT" AndAlso m_xmlr.GetAttribute("NAME") IsNot Nothing Then
+                    Units.Add(m_xmlr.GetAttribute("NAME"))
+                ElseIf m_xmlr.Name = "STOCKITEM" AndAlso m_xmlr.GetAttribute("NAME") IsNot Nothing Then
+                    StockItems.Add(m_xmlr.GetAttribute("NAME"))
                 End If
             End While
             m_xmlr.Close()
             Me.Ledgers_ = Ledgers
+            Me.Groups_ = Groups
+            Me.StockItems_ = StockItems
+            Me.Units_ = Units
         End Sub
 
         Private Function ReadLedger(ByVal LedgerData As String) As String()
@@ -123,41 +149,23 @@ Namespace Classes
             Return Names.ToArray
         End Function
 
-        Private Sub ReadXML_Groups(ByVal XML As String)
-            Dim Groups As New List(Of String)
-            Dim XDoc As New XmlDocument
-            XDoc.LoadXml(XML)
-            For Each i As XmlNode In XDoc.GetElementsByTagName("DSPDISPNAME")
-                If Not String.IsNullOrEmpty(i.InnerText) Then Groups.Add(i.InnerText)
-            Next
-            If Groups.Count > 0 Then Me.Groups_ = Groups
-        End Sub
 #End Region
 
-        Friend Async Function LoadAllGroups() As Threading.Tasks.Task(Of Boolean)
+        Friend Async Function LoadAllMasters() As Threading.Tasks.Task(Of Boolean)
             Try
-                Dim Response As Objects.Response = Await SendRequestToTally(Requests.GetAllGroups)
-                If Response.Status = True Then
-                    ReadXML_Groups(Response.Data)
-                    Return True
+                Dim Response1 As Objects.Response = Await SendRequestToTally(Requests.GetReport("List of Accounts"))
+                If Response1.Status = True Then
+                    ReadXML(Response1.Data)
+                End If
+                Dim Response2 As Objects.Response = Await SendRequestToTally(Requests.GetAllMasters)
+                If Response2.Status = True Then
+                    ReadXML(Response2.Data)
                 End If
             Catch ex As Exception
-                MsgBox("Error on loading groups." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+                MsgBox("Error on loading masters." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+                Return False
             End Try
-            Return False
-        End Function
-
-        Friend Async Function LoadAllLedgers() As Threading.Tasks.Task(Of Boolean)
-            Try
-                Dim Response As Objects.Response = Await SendRequestToTally(Requests.GetAllLedgers)
-                If Response.Status = True Then
-                    ReadXML(Response.Data)
-                    Return True
-                End If
-            Catch ex As Exception
-                MsgBox("Error on loading ledgers." & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
-            End Try
-            Return False
+            Return True
         End Function
 
         Friend Async Function CreateLedger(ByVal LedgerName As String, ByVal Group As String, ByVal Balance As Integer) As Threading.Tasks.Task(Of Objects.Response)
