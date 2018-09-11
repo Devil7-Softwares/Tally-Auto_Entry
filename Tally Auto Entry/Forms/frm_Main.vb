@@ -197,6 +197,9 @@ Public Class frm_Main
 
     Private Sub MainSpreadSheet_ActiveSheetChanged(sender As Object, e As ActiveSheetChangedEventArgs) Handles MainSpreadSheet.ActiveSheetChanged
         MainSpreadSheet.WorksheetDisplayArea.SetSize(1, (6), 99999)
+
+        Dim MaxColumn As Integer = If(MainSpreadSheet.ActiveWorksheet.Name = "Vouchers", (6 + (3 * My.Settings.NumberOfColumns)), 6)
+        LastColumnIndex = MaxColumn - 1
     End Sub
 
     Private Sub MainSpreadSheet_CustomDrawColumnHeader(sender As Object, e As CustomDrawColumnHeaderEventArgs) Handles MainSpreadSheet.CustomDrawColumnHeader
@@ -278,19 +281,34 @@ Public Class frm_Main
         btn_Sync.Enabled = False
         MainProgressPanel.Description = "Syncronizing with Tally..."
         MainProgressPanel.Visible = True
-        Dim Values As New List(Of CellValue)
+        Dim LedgerValues As New List(Of CellValue)
+        Dim StockEntriesValues As New List(Of CellValue)
+        Dim UnitsValues As New List(Of CellValue)
         If Not Await Tally.LoadAllMasters Then GoTo Finish
         For Each i As String In Tally.Ledgers
-            Values.Add(i)
+            LedgerValues.Add(i)
+        Next
+        For Each i As String In Tally.StockItems
+            StockEntriesValues.Add(i)
+        Next
+        For Each i As String In Tally.Units
+            UnitsValues.Add(i)
         Next
         txt_CompanyName.EditValue = Tally.CompanyName
         MainSpreadSheet.Document.DocumentProperties.Custom.Item("CompanyName") = Tally.CompanyName
+        MainSpreadSheet.Document.Worksheets.ActiveWorksheet = MainSpreadSheet.Document.Worksheets("Stock")
+        Dim StockEntries_Range As DevExpress.Spreadsheet.Range = MainSpreadSheet.Document.Worksheets("Stock").Columns(1).GetRangeWithAbsoluteReference
+        MainSpreadSheet.Document.Worksheets("Stock").CustomCellInplaceEditors.Add(StockEntries_Range, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(StockEntriesValues.ToArray))
+        Dim Units_Range As DevExpress.Spreadsheet.Range = MainSpreadSheet.Document.Worksheets("Stock").Columns(4).GetRangeWithAbsoluteReference
+        MainSpreadSheet.Document.Worksheets("Stock").CustomCellInplaceEditors.Add(Units_Range, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(UnitsValues.ToArray))
+        MainSpreadSheet.Document.Worksheets.ActiveWorksheet = MainSpreadSheet.Document.Worksheets("Vouchers")
         For Each i As Integer In LedgerNameColumns
-            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.ActiveWorksheet.Columns(i).GetRangeWithAbsoluteReference
-            MainSpreadSheet.ActiveWorksheet.CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(Values.ToArray))
-            MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.Color = Color.Red
-            MainSpreadSheet.ActiveWorksheet.Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
+            Dim comboBoxRange As DevExpress.Spreadsheet.Range = MainSpreadSheet.Document.Worksheets("Vouchers").Columns(i).GetRangeWithAbsoluteReference
+            MainSpreadSheet.Document.Worksheets("Vouchers").CustomCellInplaceEditors.Add(comboBoxRange, DevExpress.Spreadsheet.CustomCellInplaceEditorType.ComboBox, DevExpress.Spreadsheet.ValueObject.CreateListSource(LedgerValues.ToArray))
+            MainSpreadSheet.Document.Worksheets("Vouchers").Columns(i).Borders.LeftBorder.Color = Color.Red
+            MainSpreadSheet.Document.Worksheets("Vouchers").Columns(i).Borders.LeftBorder.LineStyle = DevExpress.Spreadsheet.BorderLineStyle.Medium
         Next
+
 Finish:
         btn_Sync.Enabled = True
         MainProgressPanel.Visible = False
@@ -310,6 +328,9 @@ Finish:
         If e.KeyCode = Keys.Enter AndAlso (e.Control Or MainSpreadSheet.ActiveCell.ColumnIndex = LastColumnIndex) Then
             If MainSpreadSheet.ActiveSheet.Name = "Vouchers" Then
                 MainSpreadSheet.SelectedCell = MainSpreadSheet.Document.Range("B" & MainSpreadSheet.ActiveCell.RowIndex + 2)
+                MainSpreadSheet.ActiveWorksheet.ScrollToColumn(0)
+            ElseIf MainSpreadSheet.ActiveSheet.Name = "Stock" Then
+                MainSpreadSheet.SelectedCell = MainSpreadSheet.Document.Range("A" & MainSpreadSheet.ActiveCell.RowIndex + 2)
                 MainSpreadSheet.ActiveWorksheet.ScrollToColumn(0)
             Else
                 Exit Sub
@@ -394,7 +415,8 @@ Finish:
     End Sub
 
     Private Sub MainSpreadSheet_MouseClick(sender As Object, e As MouseEventArgs) Handles MainSpreadSheet.MouseClick
-        If MainSpreadSheet.ActiveSheet.Name = "Vouchers" AndAlso MainSpreadSheet.Focused AndAlso (LedgerNameColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex) Or EffectColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex)) Then
+        If (MainSpreadSheet.ActiveSheet.Name = "Vouchers" AndAlso MainSpreadSheet.Focused AndAlso (LedgerNameColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex) Or EffectColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex))) Or
+             MainSpreadSheet.ActiveSheet.Name = "Stock" AndAlso MainSpreadSheet.Focused AndAlso (MainSpreadSheet.ActiveCell.ColumnIndex = 1 Or MainSpreadSheet.ActiveCell.ColumnIndex = 4) Then
             MainSpreadSheet.OpenCellEditor(CellEditorMode.Edit)
         End If
     End Sub

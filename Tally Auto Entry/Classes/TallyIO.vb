@@ -104,19 +104,26 @@ Namespace Classes
                 If Not m_xmlr.IsStartElement() Then
                     Continue While
                 End If
+
                 If m_xmlr.Name = "SVCURRENTCOMPANY" Then
                     Me.CompanyName_ = m_xmlr.ReadInnerXml
-                ElseIf m_xmlr.Name = "LEDGER" Then
+                End If
+                If m_xmlr.Name = "LEDGER" Then
                     Dim Names As String() = ReadLedger(m_xmlr.ReadInnerXml)
                     For Each i As String In Names
                         Ledgers.Add(ProcessString(i))
                     Next
-                ElseIf m_xmlr.Name = "GROUP" AndAlso m_xmlr.GetAttribute("NAME") IsNot Nothing Then
-                    Groups.Add(m_xmlr.GetAttribute("NAME"))
-                ElseIf m_xmlr.Name = "UNIT" AndAlso m_xmlr.GetAttribute("NAME") IsNot Nothing Then
-                    Units.Add(m_xmlr.GetAttribute("NAME"))
-                ElseIf m_xmlr.Name = "STOCKITEM" AndAlso m_xmlr.GetAttribute("NAME") IsNot Nothing Then
-                    StockItems.Add(m_xmlr.GetAttribute("NAME"))
+                End If
+                If m_xmlr.GetAttribute("NAME") IsNot Nothing Then
+                    If m_xmlr.Name = "GROUP" Then
+                        Groups.Add(m_xmlr.GetAttribute("NAME"))
+                    End If
+                    If m_xmlr.Name = "UNIT" Then
+                        Units.Add(m_xmlr.GetAttribute("NAME"))
+                    End If
+                    If m_xmlr.Name = "STOCKITEM" Then
+                        StockItems.Add(m_xmlr.GetAttribute("NAME"))
+                    End If
                 End If
             End While
             m_xmlr.Close()
