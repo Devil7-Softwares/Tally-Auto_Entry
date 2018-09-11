@@ -375,6 +375,26 @@ Finish:
             ElseIf EffectColumns.Contains(e.ColumnIndex) AndAlso EffectColumns.IndexOf(e.ColumnIndex) > 0 Then
                 PreCalculateValue(e, False)
             End If
+        ElseIf MainSpreadSheet.ActiveSheet.Name = "Stock" Then
+            Dim StockSheet As Worksheet = MainSpreadSheet.Document.Sheets("Stock")
+            Dim QuantityCell As Cell = StockSheet.Cells(e.RowIndex, 2)
+            Dim RateCell As Cell = StockSheet.Cells(e.RowIndex, 3)
+            Dim AmountCell As Cell = StockSheet.Cells(e.RowIndex, 5)
+            If Not QuantityCell.Value.IsEmpty And Not RateCell.Value.IsEmpty Then
+                If e.ColumnIndex = 2 Then
+                    Dim OldValue As Double = e.OldValue.NumericValue * RateCell.Value.NumericValue
+                    Dim NewValue As Double = e.Value.NumericValue * RateCell.Value.NumericValue
+                    If AmountCell.Value.IsEmpty Or AmountCell.Value.NumericValue = OldValue Then
+                        AmountCell.Value = NewValue
+                    End If
+                ElseIf e.ColumnIndex = 3 Then
+                    Dim OldValue As Double = e.OldValue.NumericValue * QuantityCell.Value.NumericValue
+                    Dim NewValue As Double = e.Value.NumericValue * QuantityCell.Value.NumericValue
+                    If AmountCell.Value.IsEmpty Or AmountCell.Value.NumericValue = OldValue Then
+                        AmountCell.Value = NewValue
+                    End If
+                End If
+            End If
         End If
     End Sub
 
