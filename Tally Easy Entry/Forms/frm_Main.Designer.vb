@@ -89,7 +89,7 @@ Partial Class frm_Main
         Me.rpg_Clipboard = New DevExpress.XtraSpreadsheet.UI.ClipboardRibbonPageGroup()
         Me.rpg_Tally = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Date = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.rpg_Masters = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Extras = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_XML = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rp_Extras = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_CellOptions = New DevExpress.XtraSpreadsheet.UI.FontRibbonPageGroup()
@@ -110,6 +110,8 @@ Partial Class frm_Main
         Me.txt_FormulaBar = New DevExpress.XtraSpreadsheet.SpreadsheetFormulaBarControl()
         Me.SpreadsheetBarController1 = New DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController()
         Me.SaveFileDialog_XML = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
+        Me.txt_VoucherColumns = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_VoucherColumns_Edit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,6 +129,7 @@ Partial Class frm_Main
         Me.formulaBarNameBoxSplitContainerControl.SuspendLayout()
         CType(Me.txt_NameBox.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpreadsheetBarController1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_VoucherColumns_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ribbonControl
@@ -135,15 +138,15 @@ Partial Class frm_Main
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL, Me.txt_Year_From, Me.txt_Year_To, Me.btn_RefreshDates, Me.btn_GenerateXML_File, Me.btn_GenerateXML_Tally, Me.btn_NewLedger, Me.btn_CustomRequest})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.rgb_Skins, Me.btn_Filter, Me.btn_FilterClear, Me.btn_Paste, Me.btn_Cut, Me.btn_Copy, Me.btn_PasteSpecial, Me.btn_WrapText, Me.btn_IncreaseDecimal, Me.btn_DecreaseDecimal, Me.btn_InsertSheetRows, Me.btn_Find, Me.btn_Replace, Me.btn_New, Me.btn_Open, Me.btn_Save, Me.btn_SaveAs, Me.btn_Undo, Me.btn_Redo, Me.btn_DocumentInfo, Me.btn_Exit, Me.btn_Sync, Me.txt_CompanyName, Me.txt_TallyVersion, Me.txt_TallyHostURL, Me.txt_Year_From, Me.txt_Year_To, Me.btn_RefreshDates, Me.btn_GenerateXML_File, Me.btn_GenerateXML_Tally, Me.btn_NewLedger, Me.btn_CustomRequest, Me.txt_VoucherColumns})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 184
+        Me.ribbonControl.MaxItemId = 185
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home, Me.rp_Extras})
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Undo)
         Me.ribbonControl.QuickToolbarItemLinks.Add(Me.btn_Redo)
-        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit, Me.txt_TallyVersionEdit, Me.txt_TallyHostURLEdit, Me.txt_Year_FromEdit, Me.txt_Year_ToEdit})
+        Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit2, Me.txt_CompanyNameEdit, Me.txt_TallyVersionEdit, Me.txt_TallyHostURLEdit, Me.txt_Year_FromEdit, Me.txt_Year_ToEdit, Me.txt_VoucherColumns_Edit})
         Me.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.ribbonControl.ShowToolbarCustomizeItem = False
         Me.ribbonControl.Size = New System.Drawing.Size(1100, 143)
@@ -475,7 +478,7 @@ Partial Class frm_Main
         '
         'rp_Home
         '
-        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Clipboard, Me.rpg_Tally, Me.rpg_Date, Me.rpg_Masters, Me.rpg_XML})
+        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Clipboard, Me.rpg_Tally, Me.rpg_Date, Me.rpg_Extras, Me.rpg_XML})
         Me.rp_Home.Name = "rp_Home"
         ReduceOperation1.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable
         ReduceOperation1.Group = Nothing
@@ -511,11 +514,12 @@ Partial Class frm_Main
         Me.rpg_Date.ShowCaptionButton = False
         Me.rpg_Date.Text = "Date"
         '
-        'rpg_Masters
+        'rpg_Extras
         '
-        Me.rpg_Masters.ItemLinks.Add(Me.btn_NewLedger)
-        Me.rpg_Masters.Name = "rpg_Masters"
-        Me.rpg_Masters.Text = "Masters"
+        Me.rpg_Extras.ItemLinks.Add(Me.btn_NewLedger)
+        Me.rpg_Extras.ItemLinks.Add(Me.txt_VoucherColumns, True)
+        Me.rpg_Extras.Name = "rpg_Extras"
+        Me.rpg_Extras.Text = "Extras"
         '
         'rpg_XML
         '
@@ -807,6 +811,21 @@ Partial Class frm_Main
         Me.SaveFileDialog_XML.Filter = "eXtendted Markeup Language Files (*.xml)|*.xml"
         Me.SaveFileDialog_XML.Title = "Select Path to Save Generated XML"
         '
+        'txt_VoucherColumns
+        '
+        Me.txt_VoucherColumns.Caption = "Entry Columns :"
+        Me.txt_VoucherColumns.Edit = Me.txt_VoucherColumns_Edit
+        Me.txt_VoucherColumns.Id = 184
+        Me.txt_VoucherColumns.Name = "txt_VoucherColumns"
+        '
+        'txt_VoucherColumns_Edit
+        '
+        Me.txt_VoucherColumns_Edit.AutoHeight = False
+        Me.txt_VoucherColumns_Edit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txt_VoucherColumns_Edit.MaxValue = New Decimal(New Integer() {11, 0, 0, 0})
+        Me.txt_VoucherColumns_Edit.MinValue = New Decimal(New Integer() {2, 0, 0, 0})
+        Me.txt_VoucherColumns_Edit.Name = "txt_VoucherColumns_Edit"
+        '
         'frm_Main
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
@@ -839,6 +858,7 @@ Partial Class frm_Main
         Me.formulaBarNameBoxSplitContainerControl.ResumeLayout(False)
         CType(Me.txt_NameBox.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpreadsheetBarController1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_VoucherColumns_Edit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -906,7 +926,9 @@ Partial Class frm_Main
     Friend WithEvents SaveFileDialog_XML As DevExpress.XtraEditors.XtraSaveFileDialog
     Friend WithEvents btn_GenerateXML_Tally As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btn_NewLedger As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents rpg_Masters As RibbonPageGroup
+    Friend WithEvents rpg_Extras As RibbonPageGroup
     Friend WithEvents btn_CustomRequest As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents rpg_Testing As RibbonPageGroup
+    Friend WithEvents txt_VoucherColumns As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txt_VoucherColumns_Edit As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
 End Class

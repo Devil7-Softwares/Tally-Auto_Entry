@@ -441,6 +441,11 @@ Finish:
         End If
     End Sub
 
+    Private Sub txt_VoucherColumns_EditValueChanged(sender As Object, e As EventArgs) Handles txt_VoucherColumns.EditValueChanged
+        My.Settings.NumberOfColumns = txt_VoucherColumns.EditValue
+        My.Settings.Save()
+    End Sub
+
 #End Region
 
 End Class
