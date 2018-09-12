@@ -24,6 +24,7 @@ Imports DevExpress.UserSkins
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Helpers
 Imports DevExpress.XtraSpreadsheet
+Imports DevExpress.XtraSpreadsheet.Services
 
 Public Class frm_Main
 
@@ -191,6 +192,10 @@ Public Class frm_Main
         InitSkins()
         InitializeComponent()
         Me.InitSkinGallery()
+
+        Dim commandFactory As CustomSpreadsheetCommandFactoryService = New CustomSpreadsheetCommandFactoryService(MainSpreadSheet, MainSpreadSheet.GetService(Of ISpreadsheetCommandFactoryService)())
+        MainSpreadSheet.RemoveService(GetType(ISpreadsheetCommandFactoryService))
+        MainSpreadSheet.AddService(GetType(ISpreadsheetCommandFactoryService), commandFactory)
     End Sub
 
     Private Sub btn_Exit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Exit.ItemClick

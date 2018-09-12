@@ -123,6 +123,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CustomPaste.vb" />
     <Compile Include="Classes\TallyIO.vb" />
     <Compile Include="Classes\PublicFunctions.vb" />
     <Compile Include="Classes\Requests.vb" />
