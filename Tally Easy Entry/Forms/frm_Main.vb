@@ -184,6 +184,18 @@ Public Class frm_Main
         Return VouchersList
     End Function
 
+    Sub InsertStockEntry(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim CellRef As String = MainSpreadSheet.ActiveCell.GetReferenceA1
+        Dim Activesheet As Worksheet = MainSpreadSheet.Document.Worksheets("Stock")
+        MainSpreadSheet.Document.Worksheets.ActiveWorksheet = Activesheet
+        Dim Row As Integer = Activesheet.GetUsedRange.BottomRowIndex + 1
+        Dim StockCell As Cell = Activesheet.Cells(Row, 0)
+        StockCell.SetValueFromText(CellRef)
+        Activesheet.SelectedCell = StockCell
+        Activesheet.ScrollToColumn(0)
+        Activesheet.ScrollToRow(Row)
+    End Sub
+
 #End Region
 
 #Region "Events"
@@ -470,6 +482,16 @@ Finish:
             Application.DoEvents()
         Next
         MsgBox("Successfully Refreshed Date Values in Vouchers Sheet.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Done")
+    End Sub
+
+    Private Sub MainSpreadSheet_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles MainSpreadSheet.PopupMenuShowing
+        If e.MenuType = SpreadsheetMenuType.Cell AndAlso MainSpreadSheet.ActiveSheet.Name = "Vouchers" AndAlso LedgerNameColumns.Contains(MainSpreadSheet.ActiveCell.ColumnIndex) Then
+            Dim Button As New DevExpress.Utils.Menu.DXMenuItem("Insert Stock Entry")
+            Button.BeginGroup = True
+            Button.ImageOptions.Image = My.Resources.add_stock
+            AddHandler Button.Click, AddressOf InsertStockEntry
+            e.Menu.Items.Add(Button)
+        End If
     End Sub
 
 #End Region
