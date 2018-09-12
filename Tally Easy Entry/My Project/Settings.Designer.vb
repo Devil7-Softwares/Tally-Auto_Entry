@@ -112,9 +112,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Tally_Auto_Entry.My.MySettings
+        Friend ReadOnly Property Settings() As Global.Devil7.Tools.TallyEasyEntry.My.MySettings
             Get
-                Return Global.Tally_Auto_Entry.My.MySettings.Default
+                Return Global.Devil7.Tools.TallyEasyEntry.My.MySettings.Default
             End Get
         End Property
     End Module

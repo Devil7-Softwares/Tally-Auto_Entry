@@ -32,12 +32,12 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Tally_Auto_Entry.frm_Main
+            Me.MainForm = Global.Devil7.Tools.TallyEasyEntry.frm_Main
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateSplashScreen()
-            Me.SplashScreen = Global.Tally_Auto_Entry.frm_Splash
+            Me.SplashScreen = Global.Devil7.Tools.TallyEasyEntry.frm_Splash
         End Sub
     End Class
 End Namespace

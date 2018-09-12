@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Tally Auto Entry")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("Tally Auto Entry")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
+<Assembly: AssemblyTitle("Devil7 - Tally Easy Entry")>
+<Assembly: AssemblyDescription("A Simple Tool to Create Accounting Entries in Spreadsheet and Export them to Tally")>
+<Assembly: AssemblyCompany("Devil7 Softwares")>
+<Assembly: AssemblyProduct("Devil7 - Tally Easy Entry")>
+<Assembly: AssemblyCopyright("Copyright © Devil7 Softwares 2018")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
