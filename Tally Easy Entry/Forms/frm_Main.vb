@@ -28,6 +28,7 @@ Imports DevExpress.XtraSpreadsheet
 Public Class frm_Main
 
 #Region "Variables"
+    Dim Loading As Boolean = False
 
     Dim LedgerNameColumns As New List(Of Integer)({6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39})
     Dim EffectColumns As New List(Of Integer)({7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40})
@@ -102,6 +103,7 @@ Public Class frm_Main
     Sub LoadSettings()
         txt_TallyHostURL.EditValue = My.Settings.TallyHostURL
         txt_TallyVersion.EditValue = My.Settings.TallyVersion
+        txt_VoucherColumns.EditValue = My.Settings.NumberOfColumns
     End Sub
 
     Function GetDate(ByVal Day As Integer, ByVal Month As Integer)
@@ -270,11 +272,13 @@ Public Class frm_Main
     End Sub
 
     Private Sub frm_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Loading = True
         LoadSettings()
         NewDocument()
         PrepareSheet()
         txt_Year_FromEdit.MaxValue = Now.Year
         txt_Year_From.EditValue = Now.Year - 1
+        Loading = False
     End Sub
 
     Private Async Sub btn_SyncLedgers_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Sync.ItemClick
@@ -442,8 +446,12 @@ Finish:
     End Sub
 
     Private Sub txt_VoucherColumns_EditValueChanged(sender As Object, e As EventArgs) Handles txt_VoucherColumns.EditValueChanged
-        My.Settings.NumberOfColumns = txt_VoucherColumns.EditValue
-        My.Settings.Save()
+        If Not Loading Then
+            My.Settings.NumberOfColumns = txt_VoucherColumns.EditValue
+            My.Settings.Save()
+            PrepareSheet()
+            MainSpreadSheet.Refresh()
+        End If
     End Sub
 
     Private Sub btn_RefreshDates_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_RefreshDates.ItemClick
