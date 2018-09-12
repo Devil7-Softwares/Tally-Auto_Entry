@@ -84,6 +84,8 @@ Partial Class frm_Main
         Me.btn_GenerateXML_Tally = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_NewLedger = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_CustomRequest = New DevExpress.XtraBars.BarButtonItem()
+        Me.txt_VoucherColumns = New DevExpress.XtraBars.BarEditItem()
+        Me.txt_VoucherColumns_Edit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection(Me.components)
         Me.rp_Home = New DevExpress.XtraSpreadsheet.UI.HomeRibbonPage()
         Me.rpg_Clipboard = New DevExpress.XtraSpreadsheet.UI.ClipboardRibbonPageGroup()
@@ -110,8 +112,6 @@ Partial Class frm_Main
         Me.txt_FormulaBar = New DevExpress.XtraSpreadsheet.SpreadsheetFormulaBarControl()
         Me.SpreadsheetBarController1 = New DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController()
         Me.SaveFileDialog_XML = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
-        Me.txt_VoucherColumns = New DevExpress.XtraBars.BarEditItem()
-        Me.txt_VoucherColumns_Edit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MainMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -120,6 +120,7 @@ Partial Class frm_Main
         CType(Me.txt_TallyHostURLEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_Year_FromEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_Year_ToEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_VoucherColumns_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,7 +130,6 @@ Partial Class frm_Main
         Me.formulaBarNameBoxSplitContainerControl.SuspendLayout()
         CType(Me.txt_NameBox.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpreadsheetBarController1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_VoucherColumns_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ribbonControl
@@ -461,6 +461,21 @@ Partial Class frm_Main
         Me.btn_CustomRequest.Id = 183
         Me.btn_CustomRequest.ImageOptions.SvgImage = CType(resources.GetObject("btn_CustomRequest.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btn_CustomRequest.Name = "btn_CustomRequest"
+        '
+        'txt_VoucherColumns
+        '
+        Me.txt_VoucherColumns.Caption = "Entry Columns :"
+        Me.txt_VoucherColumns.Edit = Me.txt_VoucherColumns_Edit
+        Me.txt_VoucherColumns.Id = 184
+        Me.txt_VoucherColumns.Name = "txt_VoucherColumns"
+        '
+        'txt_VoucherColumns_Edit
+        '
+        Me.txt_VoucherColumns_Edit.AutoHeight = False
+        Me.txt_VoucherColumns_Edit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txt_VoucherColumns_Edit.MaxValue = New Decimal(New Integer() {11, 0, 0, 0})
+        Me.txt_VoucherColumns_Edit.MinValue = New Decimal(New Integer() {2, 0, 0, 0})
+        Me.txt_VoucherColumns_Edit.Name = "txt_VoucherColumns_Edit"
         '
         'ribbonImageCollectionLarge
         '
@@ -811,21 +826,6 @@ Partial Class frm_Main
         Me.SaveFileDialog_XML.Filter = "eXtendted Markeup Language Files (*.xml)|*.xml"
         Me.SaveFileDialog_XML.Title = "Select Path to Save Generated XML"
         '
-        'txt_VoucherColumns
-        '
-        Me.txt_VoucherColumns.Caption = "Entry Columns :"
-        Me.txt_VoucherColumns.Edit = Me.txt_VoucherColumns_Edit
-        Me.txt_VoucherColumns.Id = 184
-        Me.txt_VoucherColumns.Name = "txt_VoucherColumns"
-        '
-        'txt_VoucherColumns_Edit
-        '
-        Me.txt_VoucherColumns_Edit.AutoHeight = False
-        Me.txt_VoucherColumns_Edit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txt_VoucherColumns_Edit.MaxValue = New Decimal(New Integer() {11, 0, 0, 0})
-        Me.txt_VoucherColumns_Edit.MinValue = New Decimal(New Integer() {2, 0, 0, 0})
-        Me.txt_VoucherColumns_Edit.Name = "txt_VoucherColumns_Edit"
-        '
         'frm_Main
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
@@ -849,6 +849,7 @@ Partial Class frm_Main
         CType(Me.txt_TallyHostURLEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_Year_FromEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_Year_ToEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_VoucherColumns_Edit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonImageCollectionLarge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -858,7 +859,6 @@ Partial Class frm_Main
         Me.formulaBarNameBoxSplitContainerControl.ResumeLayout(False)
         CType(Me.txt_NameBox.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpreadsheetBarController1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_VoucherColumns_Edit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

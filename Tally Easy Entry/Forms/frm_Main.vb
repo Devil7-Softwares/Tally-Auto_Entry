@@ -446,6 +446,19 @@ Finish:
         My.Settings.Save()
     End Sub
 
+    Private Sub btn_RefreshDates_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_RefreshDates.ItemClick
+        MainSpreadSheet.Document.Worksheets.ActiveWorksheet = MainSpreadSheet.Document.Worksheets("Vouchers")
+        Dim ActiveSheet As Worksheet = MainSpreadSheet.ActiveWorksheet
+        For index As Integer = 0 To ActiveSheet.Rows.LastUsedIndex
+            Dim Row As Row = ActiveSheet.Rows.Item(index)
+            If Row.Item(2).Value.IsNumeric And Row.Item(3).Value.IsNumeric Then
+                Row.Item(0).SetValue(GetDate(Row.Item(2).Value.NumericValue, Row.Item(3).Value.NumericValue))
+            End If
+            Application.DoEvents()
+        Next
+        MsgBox("Successfully Refreshed Date Values in Vouchers Sheet.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Done")
+    End Sub
+
 #End Region
 
 End Class
